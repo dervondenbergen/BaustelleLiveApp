@@ -20,6 +20,7 @@ struct ContentView: View {
     
     @State var li16date = "Datum lädt..."
     @State var li27date = "Datum lädt..."
+    @State var isLoading = false
     
     var body: some View {
         NavigationView {
@@ -29,8 +30,6 @@ struct ContentView: View {
                         .font(.title)
                         .padding(.horizontal, 16.0)
                         .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                    
-                    
                     
                     URLImage(li16!) {
                         // This view is displayed before download starts
@@ -100,10 +99,14 @@ struct ContentView: View {
                         }
                     } content: { image, info in
                         
-                        // Downloaded image
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                        NavigationLink(
+                            destination:
+                                LocationView(location: "Lindengasse 27", image: image, id: "li27", rawImage: info.cgImage, date: li27date),
+                            label: {
+                                image
+                                    .resizable()
+                                    .aspectRatio(16 / 9, contentMode: .fit)
+                            })
                     }
                     
                     Text(li27date)
@@ -117,6 +120,13 @@ struct ContentView: View {
             .padding(.top, 1)
             .navigationTitle("BaustelleLive")
             .navigationBarTitle("test")
+            .toolbar(content: {
+                Button(action: loadData) {
+                    Image(systemName: "arrow.triangle.2.circlepath")
+                }
+                .disabled(self.isLoading)
+                
+            })
             
         }
         .onAppear {
@@ -127,7 +137,10 @@ struct ContentView: View {
     }
     
     func loadData() {
+        self.isLoading = true
+        
         let r = Just.get(baustelleLiveApi)
+        
         if (r.ok) {
             print("request ok")
             let decoder = JSONDecoder()
@@ -138,6 +151,8 @@ struct ContentView: View {
             
             self.li16date = apiData.li16.human;
             self.li27date = apiData.li27.human;
+            
+            self.isLoading = false
         }
     }
 }
@@ -145,5 +160,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPod touch (7th generation)")
     }
 }

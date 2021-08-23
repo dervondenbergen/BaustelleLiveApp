@@ -8,13 +8,28 @@
 import Foundation
 
 struct BaustelleLiveApi: Codable {
-    var li16: Location!
-    var li27: Location!
-    
-    struct Location: Codable {
-        var id: String
-        var human: String
-        var imageUrl: String
-    }
+    var li16: BaustelleLiveApiLocation!
+    var li27: BaustelleLiveApiLocation!
 }
-    
+struct BaustelleLiveApiLocation: Codable {
+    var id: String
+    var human: String
+    var imageUrl: String
+}
+
+struct BaustelleLiveVideos: Codable {
+    var videos: [BaustelleLiveVideo]!
+}
+
+struct BaustelleLiveVideo: Codable, Identifiable {
+    var id: String
+    var time: String
+    var thumb: URL
+    var type: BaustelleLiveVideoType
+    var date: String
+}
+
+enum BaustelleLiveVideoType: String, Codable {
+    case monthly
+    case daily
+}
