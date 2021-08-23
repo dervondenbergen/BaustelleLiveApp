@@ -1,0 +1,61 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "DataOperation",
+        "repositoryURL": "https://github.com/Mobelux/DataOperation",
+        "state": {
+          "branch": null,
+          "revision": "bcafb921c95579aff519f59bf9ec524e45e0695c",
+          "version": "1.1.0"
+        }
+      },
+      {
+        "package": "DiskCache",
+        "repositoryURL": "https://github.com/Mobelux/DiskCache",
+        "state": {
+          "branch": null,
+          "revision": "678d6f1e283836535488fd9f1776f40719e2e137",
+          "version": "1.1.2"
+        }
+      },
+      {
+        "package": "ImageFetcher",
+        "repositoryURL": "https://github.com/Mobelux/ImageFetcher.git",
+        "state": {
+          "branch": null,
+          "revision": "664835a04de799c408c9c1f4b5b2d619011820b4",
+          "version": "1.1.4"
+        }
+      },
+      {
+        "package": "Just",
+        "repositoryURL": "https://github.com/dduan/Just.git",
+        "state": {
+          "branch": null,
+          "revision": "1824bf84cf52d11d69ae20cfb89f0ce5bffa5650",
+          "version": "0.8.0"
+        }
+      },
+      {
+        "package": "URLImage",
+        "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
+        "state": {
+          "branch": null,
+          "revision": "a55b6597f6ce67dfbdc136ecfb8c8436b14ca41d",
+          "version": "3.1.0"
+        }
+      },
+      {
+        "package": "URLImageModule",
+        "repositoryURL": "https://github.com/swiftui-packages/url-image-module.git",
+        "state": {
+          "branch": null,
+          "revision": "2c2aa5479653df1b975ef43552f3ce77e91bf47f",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
