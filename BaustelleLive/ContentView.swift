@@ -10,13 +10,16 @@ import URLImage
 import Just
 
 struct ContentView: View {
-    var li16 = URL(string: "https://latest.baustelle.live/li16.jpg");
-    var li27 = URL(string: "https://latest.baustelle.live/li27.jpg");
+    @State var li16 = URL(string: "https://latest.baustelle.live/li16.jpg");
+    @State var li27 = URL(string: "https://latest.baustelle.live/li27.jpg");
     
     var li16txt = URL(string: "https://latest.baustelle.live/li16.txt");
     var li27txt = URL(string: "https://latest.baustelle.live/li27.txt");
     
+    var baustelleLiveApi = "https://latest.baustelle.live/api.json"
+    
     @State var li16date = "Datum lädt..."
+    @State var li27date = "Datum lädt..."
     
     var body: some View {
         NavigationView {
@@ -51,11 +54,16 @@ struct ContentView: View {
                                 retry()
                             })
                         }
-                    } content: { image in
-                        // Downloaded image
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
+                    } content: { image, info in
+                        NavigationLink(
+                            destination:
+                                LocationView(location: "Lindengasse 16", image: image, id: "li16", rawImage: info.cgImage, date: li16date),
+                            label: {
+                                image
+                                    .resizable()
+                                    .aspectRatio(4 / 3, contentMode: .fit)
+                            })
+                        
                     }
                     
                     Text(li16date)
@@ -90,26 +98,47 @@ struct ContentView: View {
                                 retry()
                             })
                         }
-                    } content: { image in
+                    } content: { image, info in
+                        
                         // Downloaded image
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                     }
+                    
+                    Text(li27date)
+                        .padding(.horizontal, 16.0)
+                        .padding(/*@START_MENU_TOKEN@*/.bottom, 10.0/*@END_MENU_TOKEN@*/)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 }
+                
             }
+            
             .padding(.top, 1)
-            .navigationTitle("Letzte Updates")
+            .navigationTitle("BaustelleLive")
+            .navigationBarTitle("test")
+            
         }
         .onAppear {
-            //loadDate(camera: "16")
+            loadData()
             print("hallo")
         }
+        
     }
     
-    func loadDate(camera: String) {
-        print("Camera \(camera)")
-        self.li16date = camera
+    func loadData() {
+        let r = Just.get(baustelleLiveApi)
+        if (r.ok) {
+            print("request ok")
+            let decoder = JSONDecoder()
+            let apiData = try! decoder.decode(BaustelleLiveApi.self, from: r.content!)
+            
+            self.li16 = URL(string: apiData.li16.imageUrl);
+            self.li27 = URL(string: apiData.li27.imageUrl);
+            
+            self.li16date = apiData.li16.human;
+            self.li27date = apiData.li27.human;
+        }
     }
 }
 
