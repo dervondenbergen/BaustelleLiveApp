@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		DC5D9BEF26D40C1D00ED1427 /* BaustelleLiveApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */; };
+		DC64388E26D7CB5400266A1F /* AdvancedScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = DC64388D26D7CB5400266A1F /* AdvancedScrollView */; };
+		DC64389026D7D63700266A1F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64388F26D7D63700266A1F /* Category.swift */; };
+		DC64389326D7E27300266A1F /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = DC64389226D7E27300266A1F /* DynamicColor */; };
 		DC829B5126CC2869000E446E /* BaustelleLiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC829B5026CC2869000E446E /* BaustelleLiveApp.swift */; };
 		DC829B5326CC2869000E446E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC829B5226CC2869000E446E /* ContentView.swift */; };
 		DC829B5526CC286B000E446E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC829B5426CC286B000E446E /* Assets.xcassets */; };
@@ -16,18 +19,20 @@
 		DC829B6426CC29BA000E446E /* Just in Frameworks */ = {isa = PBXBuildFile; productRef = DC829B6326CC29BA000E446E /* Just */; };
 		DC829B6726CC2AE9000E446E /* URLImageModule in Frameworks */ = {isa = PBXBuildFile; productRef = DC829B6626CC2AE9000E446E /* URLImageModule */; };
 		DC829B6A26CC2FF0000E446E /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = DC829B6926CC2FF0000E446E /* URLImage */; };
+		DCC2899426D7C2EC00281E50 /* VideoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCC2899326D7C2EC00281E50 /* VideoItem.swift */; };
 		DCD82A8526D3D50100FCE6B8 /* LocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCD82A8426D3D50100FCE6B8 /* LocationView.swift */; };
-		DCD82A8826D3D98100FCE6B8 /* AdvancedScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = DCD82A8726D3D98100FCE6B8 /* AdvancedScrollView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaustelleLiveApi.swift; sourceTree = "<group>"; };
+		DC64388F26D7D63700266A1F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC829B4D26CC2869000E446E /* BaustelleLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaustelleLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC829B5026CC2869000E446E /* BaustelleLiveApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaustelleLiveApp.swift; sourceTree = "<group>"; };
 		DC829B5226CC2869000E446E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DC829B5426CC286B000E446E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC829B5726CC286B000E446E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DC829B5926CC286B000E446E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCC2899326D7C2EC00281E50 /* VideoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoItem.swift; sourceTree = "<group>"; };
 		DCD82A8426D3D50100FCE6B8 /* LocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -39,7 +44,8 @@
 				DC829B6426CC29BA000E446E /* Just in Frameworks */,
 				DC829B6126CC2955000E446E /* ImageFetcher in Frameworks */,
 				DC829B6A26CC2FF0000E446E /* URLImage in Frameworks */,
-				DCD82A8826D3D98100FCE6B8 /* AdvancedScrollView in Frameworks */,
+				DC64388E26D7CB5400266A1F /* AdvancedScrollView in Frameworks */,
+				DC64389326D7E27300266A1F /* DynamicColor in Frameworks */,
 				DC829B6726CC2AE9000E446E /* URLImageModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -66,6 +72,7 @@
 		DC829B4F26CC2869000E446E /* BaustelleLive */ = {
 			isa = PBXGroup;
 			children = (
+				DC64388F26D7D63700266A1F /* Category.swift */,
 				DC829B5026CC2869000E446E /* BaustelleLiveApp.swift */,
 				DC829B5226CC2869000E446E /* ContentView.swift */,
 				DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */,
@@ -73,6 +80,7 @@
 				DC829B5426CC286B000E446E /* Assets.xcassets */,
 				DC829B5926CC286B000E446E /* Info.plist */,
 				DC829B5626CC286B000E446E /* Preview Content */,
+				DCC2899326D7C2EC00281E50 /* VideoItem.swift */,
 			);
 			path = BaustelleLive;
 			sourceTree = "<group>";
@@ -106,7 +114,8 @@
 				DC829B6326CC29BA000E446E /* Just */,
 				DC829B6626CC2AE9000E446E /* URLImageModule */,
 				DC829B6926CC2FF0000E446E /* URLImage */,
-				DCD82A8726D3D98100FCE6B8 /* AdvancedScrollView */,
+				DC64388D26D7CB5400266A1F /* AdvancedScrollView */,
+				DC64389226D7E27300266A1F /* DynamicColor */,
 			);
 			productName = BaustelleLive;
 			productReference = DC829B4D26CC2869000E446E /* BaustelleLive.app */;
@@ -140,7 +149,8 @@
 				DC829B6226CC29BA000E446E /* XCRemoteSwiftPackageReference "Just" */,
 				DC829B6526CC2AE9000E446E /* XCRemoteSwiftPackageReference "url-image-module" */,
 				DC829B6826CC2FF0000E446E /* XCRemoteSwiftPackageReference "url-image" */,
-				DCD82A8626D3D98100FCE6B8 /* XCRemoteSwiftPackageReference "advanced-scrollview" */,
+				DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */,
+				DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */,
 			);
 			productRefGroup = DC829B4E26CC2869000E446E /* Products */;
 			projectDirPath = "";
@@ -168,10 +178,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCC2899426D7C2EC00281E50 /* VideoItem.swift in Sources */,
 				DC5D9BEF26D40C1D00ED1427 /* BaustelleLiveApi.swift in Sources */,
 				DC829B5326CC2869000E446E /* ContentView.swift in Sources */,
 				DCD82A8526D3D50100FCE6B8 /* LocationView.swift in Sources */,
 				DC829B5126CC2869000E446E /* BaustelleLiveApp.swift in Sources */,
+				DC64389026D7D63700266A1F /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +374,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/advanced-scrollview";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.6;
+			};
+		};
+		DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 		DC829B5F26CC2955000E446E /* XCRemoteSwiftPackageReference "ImageFetcher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Mobelux/ImageFetcher.git";
@@ -394,17 +422,19 @@
 				minimumVersion = 3.1.0;
 			};
 		};
-		DCD82A8626D3D98100FCE6B8 /* XCRemoteSwiftPackageReference "advanced-scrollview" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dmytro-anokhin/advanced-scrollview";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.6;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		DC64388D26D7CB5400266A1F /* AdvancedScrollView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */;
+			productName = AdvancedScrollView;
+		};
+		DC64389226D7E27300266A1F /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
+		};
 		DC829B6026CC2955000E446E /* ImageFetcher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DC829B5F26CC2955000E446E /* XCRemoteSwiftPackageReference "ImageFetcher" */;
@@ -424,11 +454,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC829B6826CC2FF0000E446E /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
-		};
-		DCD82A8726D3D98100FCE6B8 /* AdvancedScrollView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DCD82A8626D3D98100FCE6B8 /* XCRemoteSwiftPackageReference "advanced-scrollview" */;
-			productName = AdvancedScrollView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

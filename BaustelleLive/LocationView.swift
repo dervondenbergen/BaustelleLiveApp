@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AdvancedScrollView
+import URLImage
 import Just
 
 struct LocationView: View {
@@ -34,7 +35,7 @@ struct LocationView: View {
                         image
                             .resizable()
                             .aspectRatio(contentMode: .fill)
-                            .frame(width: 120, height: 80)
+                            .frame(width: 128, height: 72)
                             .cornerRadius(8.0)
                             .clipped()
                         
@@ -94,60 +95,10 @@ struct LocationView: View {
                 
                 
                 ForEach(videos) {video in
-                    // playlist zum link hinzufügen oder link direkt am server erstellen
-                    Link(destination: URL(string: "https://youtube.com/watch?v=\(video.id)")!, label: {
-                        HStack {
-                            // async image laden mit placeholder
-                            
-                            //                                image
-                            //                                    .resizable()
-                            //                                    .aspectRatio(contentMode: .fill)
-                            //                                    .frame(width: 120, height: 80)
-                            //                                    .cornerRadius(8.0)
-                            //                                    .clipped()
-                            
-                            //                                Spacer()
-                            
-                            VStack(alignment: .leading, spacing: 0) {
-                                Text(video.date)
-                                    .font(.headline)
-                                    .foregroundColor(.primary)
-                                
-                                HStack {
-                                    switch video.type {
-                                    case .daily:
-                                        Text("Daily")
-                                            .padding(.horizontal, 7)
-                                            .padding(.vertical, 1)
-                                            .font(Font.system(.body).smallCaps())
-                                            .foregroundColor(.white)
-                                            .background(Color.purple)
-                                            .cornerRadius(4)
-                                    case .monthly:
-                                        Text("Monthly")
-                                            .padding(.horizontal, 7)
-                                            .padding(.vertical, 1)
-                                            .font(Font.system(.body).smallCaps())
-                                            .foregroundColor(.white)
-                                            .background(Color.orange)
-                                            .cornerRadius(4)
-                                    }
-                                    
-                                    Text(video.time)
-                                        .padding(.horizontal, 7)
-                                        .padding(.vertical, 1)
-                                        .font(Font.system(.body).smallCaps())
-                                        .foregroundColor(.white)
-                                        .background(Color.gray)
-                                        .cornerRadius(4)
-                                }
-                            }
-                            .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                            
-                        }
-                    })
+                    VideoItem(video: video)
                 }
                 .padding(.horizontal, 16.0)
+                .padding(.bottom, 16)
                 .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
                 
             }

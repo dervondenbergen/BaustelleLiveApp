@@ -27,6 +27,7 @@ struct BaustelleLiveVideo: Codable, Identifiable {
     var thumb: URL
     var type: BaustelleLiveVideoType
     var date: String
+    var playlist: String
 }
 
 enum BaustelleLiveVideoType: String, Codable {
