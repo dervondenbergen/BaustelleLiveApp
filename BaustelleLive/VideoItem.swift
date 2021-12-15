@@ -61,7 +61,11 @@ struct VideoItem: View {
                         
                     }.padding(.bottom, 3)
                 }
-                .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                
+                Image(systemName: "arrow.up.forward")
+                    .font(.headline)
+                    .foregroundColor(.primary)
                 
             }
         })

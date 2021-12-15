@@ -29,7 +29,7 @@ struct ContentView: View {
                     Text("Lindengasse 16")
                         .font(.title)
                         .padding(.horizontal, 16.0)
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                     
                     URLImage(li16!) {
                         // This view is displayed before download starts
@@ -42,7 +42,7 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                             Spacer()
                         }
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity)
                         .aspectRatio(4 / 3, contentMode: .fit)
                         .background(Color.gray)
                     } failure: { error, retry in
@@ -67,13 +67,13 @@ struct ContentView: View {
                     
                     Text(li16date)
                         .padding(.horizontal, 16.0)
-                        .padding(/*@START_MENU_TOKEN@*/.bottom, 10.0/*@END_MENU_TOKEN@*/)
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                        .padding(.bottom, 10.0)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     
                     Text("Lindengasse 27")
                         .font(.title)
                         .padding(.horizontal, 16.0)
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     
                     URLImage(li27!) {
                         // This view is displayed before download starts
@@ -86,7 +86,7 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                             Spacer()
                         }
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                        .frame(minWidth: 0, maxWidth: .infinity)
                         .aspectRatio(16 / 9, contentMode: .fit)
                         .background(Color.gray)
                     } failure: { error, retry in
@@ -111,13 +111,11 @@ struct ContentView: View {
                     
                     Text(li27date)
                         .padding(.horizontal, 16.0)
-                        .padding(/*@START_MENU_TOKEN@*/.bottom, 10.0/*@END_MENU_TOKEN@*/)
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                        .padding(.bottom, 10.0)
+                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, alignment: .leading)
                 }
                 
             }
-            
-            .padding(.top, 1)
             .navigationTitle("BaustelleLive")
             .navigationBarTitle("test")
             .toolbar(content: {

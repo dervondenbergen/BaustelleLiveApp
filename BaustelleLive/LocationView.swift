@@ -46,7 +46,7 @@ struct LocationView: View {
                                 .foregroundColor(.primary)
                             Text(date)
                         }
-                        .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                         
                     }
                 }
@@ -68,6 +68,14 @@ struct LocationView: View {
                 }, content: {
                     VStack {
                         HStack {
+                            Button(action: {
+                                self.imageOpen = false
+                            }) {
+                              Text("Schließen")
+                            }
+                            
+                            Spacer()
+                            
                             Text(date)
                             
                             Spacer()
@@ -91,7 +99,7 @@ struct LocationView: View {
                     .font(.title)
                     .padding(.horizontal, 16.0)
                     .padding(.bottom, 8.0)
-                    .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
                 
                 ForEach(videos) {video in
@@ -99,11 +107,10 @@ struct LocationView: View {
                 }
                 .padding(.horizontal, 16.0)
                 .padding(.bottom, 16)
-                .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
             }
         }
-        .padding(.top, 1)
         .navigationTitle(location)
         .onAppear {
             loadData()

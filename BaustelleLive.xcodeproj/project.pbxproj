@@ -137,10 +137,10 @@
 			};
 			buildConfigurationList = DC829B4826CC2869000E446E /* Build configuration list for PBXProject "BaustelleLive" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = de;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
+				de,
 				Base,
 			);
 			mainGroup = DC829B4426CC2869000E446E;
@@ -313,7 +313,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BaustelleLive/Preview Content\"";
-				DEVELOPMENT_TEAM = 4L3CWPLA99;
+				DEVELOPMENT_TEAM = 6BHAXG5GQ5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BaustelleLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -321,7 +321,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = at.orf.BaustelleLive;
+				PRODUCT_BUNDLE_IDENTIFIER = is.demont.BaustelleLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -335,7 +335,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"BaustelleLive/Preview Content\"";
-				DEVELOPMENT_TEAM = 4L3CWPLA99;
+				DEVELOPMENT_TEAM = 6BHAXG5GQ5;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = BaustelleLive/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -343,7 +343,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = at.orf.BaustelleLive;
+				PRODUCT_BUNDLE_IDENTIFIER = is.demont.BaustelleLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
