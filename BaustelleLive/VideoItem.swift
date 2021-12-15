@@ -69,6 +69,17 @@ struct VideoItem: View {
                 
             }
         })
+            .contextMenu {
+                Button(action: {
+                    UIPasteboard.general.url = URL(string: "https://youtube.com/watch?v=\(video.id)&list=\(video.playlist)")!
+                }) {
+                    Label("Kopiere Link", systemImage: "link")
+                }
+                
+                Link(destination: URL(string: "https://youtube.com/watch?v=\(video.id)&list=\(video.playlist)")!) {
+                    Label("Öffne YouTube", systemImage: "video")
+                }
+            }
     }
 }
 
