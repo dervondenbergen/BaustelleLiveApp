@@ -21,11 +21,28 @@ struct ContentView: View {
     @State var li16date = "Datum lädt..."
     @State var li27date = "Datum lädt..."
     @State var isLoading = false
+    @State var callout: String?
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
+                    if (callout != nil) {
+                        Text(callout!)
+                            .fontWeight(.regular)
+                            .foregroundColor(Color.black)
+                            .padding(10)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .background(Color("CalloutBackground"))
+                            .cornerRadius(16)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color("CalloutBorder"), lineWidth: 4)
+                            )
+                            .padding(.horizontal, 16)
+
+                    }
+                    
                     Text("Lindengasse 16")
                         .font(.title)
                         .padding(.horizontal, 16.0)
@@ -116,7 +133,7 @@ struct ContentView: View {
                 }
                 
             }
-            .navigationTitle("BaustelleLive")
+            .navigationTitle("baustelle.live")
             .navigationBarTitle("test")
             .toolbar(content: {
                 Button(action: loadData) {
@@ -149,6 +166,8 @@ struct ContentView: View {
             
             self.li16date = apiData.li16.human;
             self.li27date = apiData.li27.human;
+            
+            self.callout = apiData.callout;
             
             self.isLoading = false
         }
