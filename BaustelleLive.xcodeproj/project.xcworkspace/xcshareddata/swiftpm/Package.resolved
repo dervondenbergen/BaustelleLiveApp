@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "AdvancedScrollView",
-        "repositoryURL": "https://github.com/dmytro-anokhin/advanced-scrollview",
+        "repositoryURL": "https://github.com/herrernst/advanced-scrollview",
         "state": {
-          "branch": null,
-          "revision": "87d83354cde746751029312efdb844e0f57dc820",
-          "version": "0.0.6"
+          "branch": "fix-build-for-other-platforms",
+          "revision": "c4480eb49b29d77a955d82a3f76d16e1b8fa80a6",
+          "version": null
         }
       },
       {

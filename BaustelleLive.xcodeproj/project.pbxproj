@@ -368,10 +368,10 @@
 /* Begin XCRemoteSwiftPackageReference section */
 		DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dmytro-anokhin/advanced-scrollview";
+			repositoryURL = "https://github.com/herrernst/advanced-scrollview";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.6;
+				branch = "fix-build-for-other-platforms";
+				kind = branch;
 			};
 		};
 		DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
