@@ -10,7 +10,7 @@ import Foundation
 struct BaustelleLiveApi: Codable {
     var li16: BaustelleLiveApiLocation!
     var li27: BaustelleLiveApiLocation
-    var callout: String
+    var callout: String?
 }
 struct BaustelleLiveApiLocation: Codable {
     var id: String
