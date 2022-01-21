@@ -1,0 +1,309 @@
+{
+  "li16": {
+    "id": "li16",
+    "iso": "2022-01-21T11:14:31.000Z",
+    "human": "21.01.2022, 12:14:31",
+    "humanDate": "21.01.2022",
+    "humanTime": "12:14:31",
+    "imageUrl": "https://latest.baustelle.live/li16.jpg?date=1642763671000",
+    "videos": [
+      {
+        "id": "-u7T3Ghwi5Y",
+        "title": "baustelle.live Zeitraffer – Dezember 2021 – Kamera 1",
+        "duration": 2202,
+        "publishedAt": "2022-01-16T12:00:32.000Z",
+        "time": "36:42",
+        "thumb": "https://i3.ytimg.com/vi/-u7T3Ghwi5Y/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Dezember 2021"
+      },
+      {
+        "id": "AoKhv6oBgBE",
+        "title": "baustelle.live Zeitraffer – November 2021 – Kamera 1",
+        "duration": 2200,
+        "publishedAt": "2022-01-16T00:33:36.000Z",
+        "time": "36:40",
+        "thumb": "https://i3.ytimg.com/vi/AoKhv6oBgBE/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "November 2021"
+      },
+      {
+        "id": "JfP0KJzSOmA",
+        "title": "baustelle.live Zeitraffer – Oktober 2021 – Kamera 1",
+        "duration": 2141,
+        "publishedAt": "2022-01-16T13:40:15.000Z",
+        "time": "35:41",
+        "thumb": "https://i3.ytimg.com/vi/JfP0KJzSOmA/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Oktober 2021"
+      },
+      {
+        "id": "r-vYL__0-EI",
+        "title": "baustelle.live Zeitraffer – September 2021 – Kamera 1",
+        "duration": 2244,
+        "publishedAt": "2022-01-16T11:29:19.000Z",
+        "time": "37:24",
+        "thumb": "https://i3.ytimg.com/vi/r-vYL__0-EI/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "September 2021"
+      },
+      {
+        "id": "Rs5AhvoCDmE",
+        "title": "baustelle.live Zeitraffer – August 2021 – Kamera 1",
+        "duration": 2303,
+        "publishedAt": "2022-01-16T21:48:20.000Z",
+        "time": "38:23",
+        "thumb": "https://i3.ytimg.com/vi/Rs5AhvoCDmE/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "August 2021"
+      },
+      {
+        "id": "dkqX37Scmp8",
+        "title": "baustelle.live Zeitraffer – Juli 2021 – Kamera 1",
+        "duration": 2243,
+        "publishedAt": "2022-01-16T22:27:57.000Z",
+        "time": "37:23",
+        "thumb": "https://i3.ytimg.com/vi/dkqX37Scmp8/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Juli 2021"
+      },
+      {
+        "id": "LH4JoZgMkZ0",
+        "title": "baustelle.live Zeitraffer Daily – 15. Juli 2021 – Kamera 1",
+        "duration": 101,
+        "publishedAt": "2021-07-16T04:11:47.000Z",
+        "time": "1:41",
+        "thumb": "https://i3.ytimg.com/vi/LH4JoZgMkZ0/maxresdefault.jpg",
+        "type": "daily",
+        "playlist": "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD",
+        "date": "15. Juli 2021"
+      },
+      {
+        "id": "KFWuXDQNeqk",
+        "title": "baustelle.live Zeitraffer Daily – 14. Juli 2021 – Kamera 1",
+        "duration": 101,
+        "publishedAt": "2021-07-13T22:22:51.000Z",
+        "time": "1:41",
+        "thumb": "https://i3.ytimg.com/vi/KFWuXDQNeqk/maxresdefault.jpg",
+        "type": "daily",
+        "playlist": "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD",
+        "date": "14. Juli 2021"
+      },
+      {
+        "id": "PYu5VTk_KIU",
+        "title": "baustelle.live Zeitraffer Daily – 13. Juli 2021 – Kamera 1",
+        "duration": 102,
+        "publishedAt": "2021-07-14T15:18:22.000Z",
+        "time": "1:42",
+        "thumb": "https://i3.ytimg.com/vi/PYu5VTk_KIU/maxresdefault.jpg",
+        "type": "daily",
+        "playlist": "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD",
+        "date": "13. Juli 2021"
+      },
+      {
+        "id": "yV9PqtRMBDs",
+        "title": "baustelle.live Zeitraffer Daily – 12. Juli 2021 – Kamera 1",
+        "duration": 103,
+        "publishedAt": "2021-07-12T10:35:16.000Z",
+        "time": "1:43",
+        "thumb": "https://i3.ytimg.com/vi/yV9PqtRMBDs/maxresdefault.jpg",
+        "type": "daily",
+        "playlist": "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD",
+        "date": "12. Juli 2021"
+      },
+      {
+        "id": "ns_le-vDsqU",
+        "title": "baustelle.live Zeitraffer – Juni 2021 – Kamera 1",
+        "duration": 2242,
+        "publishedAt": "2021-07-07T03:12:08.000Z",
+        "time": "37:22",
+        "thumb": "https://i3.ytimg.com/vi/ns_le-vDsqU/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Juni 2021"
+      },
+      {
+        "id": "bOgfYaV3GX0",
+        "title": "baustelle.live Zeitraffer – Mai 2021 – Kamera 1",
+        "duration": 2061,
+        "publishedAt": "2021-07-07T06:38:18.000Z",
+        "time": "34:21",
+        "thumb": "https://i3.ytimg.com/vi/bOgfYaV3GX0/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Mai 2021"
+      },
+      {
+        "id": "jpcF0DGC4Qs",
+        "title": "baustelle.live Zeitraffer – April 2021 – Kamera 1",
+        "duration": 1582,
+        "publishedAt": "2021-07-07T01:06:05.000Z",
+        "time": "26:22",
+        "thumb": "https://i3.ytimg.com/vi/jpcF0DGC4Qs/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "April 2021"
+      }
+    ]
+  },
+  "li27": {
+    "id": "li27",
+    "iso": "2022-01-21T11:14:31.000Z",
+    "human": "21.01.2022, 12:14:31",
+    "humanDate": "21.01.2022",
+    "humanTime": "12:14:31",
+    "imageUrl": "https://latest.baustelle.live/li27.jpg?date=1642763671000",
+    "videos": [
+      {
+        "id": "hClr48qcnJI",
+        "title": "baustelle.live Zeitraffer – Dezember 2021 – Kamera 2",
+        "duration": 2103,
+        "publishedAt": "2022-01-16T00:45:37.000Z",
+        "time": "35:03",
+        "thumb": "https://i3.ytimg.com/vi/hClr48qcnJI/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Dezember 2021"
+      },
+      {
+        "id": "FUmbWLezmVc",
+        "title": "baustelle.live Zeitraffer – November 2021 – Kamera 2",
+        "duration": 2119,
+        "publishedAt": "2022-01-16T03:04:15.000Z",
+        "time": "35:19",
+        "thumb": "https://i3.ytimg.com/vi/FUmbWLezmVc/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "November 2021"
+      },
+      {
+        "id": "UASQLfIjo4Q",
+        "title": "baustelle.live Zeitraffer – Oktober 2021 – Kamera 2",
+        "duration": 1889,
+        "publishedAt": "2022-01-16T05:39:26.000Z",
+        "time": "31:29",
+        "thumb": "https://i3.ytimg.com/vi/UASQLfIjo4Q/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Oktober 2021"
+      },
+      {
+        "id": "ITraUql6ido",
+        "title": "baustelle.live Zeitraffer – September 2021 – Kamera 2",
+        "duration": 2242,
+        "publishedAt": "2022-01-16T12:24:26.000Z",
+        "time": "37:22",
+        "thumb": "https://i3.ytimg.com/vi/ITraUql6ido/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "September 2021"
+      },
+      {
+        "id": "V0AnOCQjYj4",
+        "title": "baustelle.live Zeitraffer – August 2021 – Kamera 2",
+        "duration": 2083,
+        "publishedAt": "2022-01-16T21:13:32.000Z",
+        "time": "34:43",
+        "thumb": "https://i3.ytimg.com/vi/V0AnOCQjYj4/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "August 2021"
+      },
+      {
+        "id": "QUPCqluxD7k",
+        "title": "baustelle.live Zeitraffer – Juli 2021 – Kamera 2",
+        "duration": 2207,
+        "publishedAt": "2022-01-16T14:26:45.000Z",
+        "time": "36:47",
+        "thumb": "https://i3.ytimg.com/vi/QUPCqluxD7k/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Juli 2021"
+      },
+      {
+        "id": "31JvyqYGOho",
+        "title": "baustelle.live Zeitraffer Daily – 15. Juli 2021 – Kamera 2",
+        "duration": 91,
+        "publishedAt": "2021-07-16T17:13:31.000Z",
+        "time": "1:31",
+        "thumb": "https://i3.ytimg.com/vi/31JvyqYGOho/maxresdefault.jpg",
+        "type": "daily",
+        "playlist": "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD",
+        "date": "15. Juli 2021"
+      },
+      {
+        "id": "OLNnsR-ZfZg",
+        "title": "baustelle.live Zeitraffer Daily – 14. Juli 2021 – Kamera 2",
+        "duration": 101,
+        "publishedAt": "2021-07-14T15:50:42.000Z",
+        "time": "1:41",
+        "thumb": "https://i3.ytimg.com/vi/OLNnsR-ZfZg/maxresdefault.jpg",
+        "type": "daily",
+        "playlist": "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD",
+        "date": "14. Juli 2021"
+      },
+      {
+        "id": "T_sZtIsPafw",
+        "title": "baustelle.live Zeitraffer Daily – 13. Juli 2021 – Kamera 2",
+        "duration": 102,
+        "publishedAt": "2021-07-14T15:30:49.000Z",
+        "time": "1:42",
+        "thumb": "https://i3.ytimg.com/vi/T_sZtIsPafw/maxresdefault.jpg",
+        "type": "daily",
+        "playlist": "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD",
+        "date": "13. Juli 2021"
+      },
+      {
+        "id": "rDrfrX7c36Y",
+        "title": "baustelle.live Zeitraffer Daily – 12. Juli 2021 – Kamera 2",
+        "duration": 102,
+        "publishedAt": "2021-07-12T17:34:38.000Z",
+        "time": "1:42",
+        "thumb": "https://i3.ytimg.com/vi/rDrfrX7c36Y/maxresdefault.jpg",
+        "type": "daily",
+        "playlist": "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD",
+        "date": "12. Juli 2021"
+      },
+      {
+        "id": "Yp0-NLF-XS4",
+        "title": "baustelle.live Zeitraffer – Juni 2021 – Kamera 2",
+        "duration": 2208,
+        "publishedAt": "2021-07-06T23:54:06.000Z",
+        "time": "36:48",
+        "thumb": "https://i3.ytimg.com/vi/Yp0-NLF-XS4/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Juni 2021"
+      },
+      {
+        "id": "bCzav2ORkhY",
+        "title": "baustelle.live Zeitraffer – Mai 2021 – Kamera 2",
+        "duration": 2048,
+        "publishedAt": "2021-07-07T02:45:40.000Z",
+        "time": "34:08",
+        "thumb": "https://i3.ytimg.com/vi/bCzav2ORkhY/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "Mai 2021"
+      },
+      {
+        "id": "p2oSBrERqbU",
+        "title": "baustelle.live Zeitraffer – April 2021 – Kamera 2",
+        "duration": 1430,
+        "publishedAt": "2021-07-07T13:31:43.000Z",
+        "time": "23:50",
+        "thumb": "https://i3.ytimg.com/vi/p2oSBrERqbU/maxresdefault.jpg",
+        "type": "monthly",
+        "playlist": "PLIKbLfgTek4SD7jalK1D87QNdUSTefDo2",
+        "date": "April 2021"
+      }
+    ]
+  },
+  "callout_off": "Die Baustelle macht bis zum 10.01. Winterpause. In diesem Zeitraum werden keine Fotos aufgenommen."
+}

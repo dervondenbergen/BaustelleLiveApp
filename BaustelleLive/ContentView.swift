@@ -13,15 +13,13 @@ struct ContentView: View {
     @State var li16 = URL(string: "https://latest.baustelle.live/li16.jpg");
     @State var li27 = URL(string: "https://latest.baustelle.live/li27.jpg");
     
-    var li16txt = URL(string: "https://latest.baustelle.live/li16.txt");
-    var li27txt = URL(string: "https://latest.baustelle.live/li27.txt");
-    
     var baustelleLiveApi = "https://latest.baustelle.live/api.json"
     
     @State var li16date = "Datum lädt..."
     @State var li27date = "Datum lädt..."
     @State var isLoading = false
     @State var callout: String?
+    @State var data: BaustelleLiveApi?
     
     var body: some View {
         NavigationView {
@@ -73,7 +71,7 @@ struct ContentView: View {
                     } content: { image, info in
                         NavigationLink(
                             destination:
-                                LocationView(location: "Lindengasse 16", image: image, id: "li16", rawImage: info.cgImage, date: li16date),
+                                LocationView(location: "Lindengasse 16", image: image, id: "li16", rawImage: info.cgImage, date: li16date, videos: data!.li16.videos),
                             label: {
                                 image
                                     .resizable()
@@ -118,7 +116,7 @@ struct ContentView: View {
                         
                         NavigationLink(
                             destination:
-                                LocationView(location: "Lindengasse 27", image: image, id: "li27", rawImage: info.cgImage, date: li27date),
+                                LocationView(location: "Lindengasse 27", image: image, id: "li27", rawImage: info.cgImage, date: li27date, videos: data!.li27.videos),
                             label: {
                                 image
                                     .resizable()
@@ -168,6 +166,8 @@ struct ContentView: View {
             self.li27date = apiData.li27.human;
             
             self.callout = apiData.callout;
+            
+            self.data = apiData;
             
             self.isLoading = false
         }

@@ -16,9 +16,7 @@ struct BaustelleLiveApiLocation: Codable {
     var id: String
     var human: String
     var imageUrl: String
-}
-
-struct BaustelleLiveVideos: Codable {
+    var dateHash: String
     var videos: [BaustelleLiveVideo]!
 }
 

@@ -16,15 +16,13 @@ struct LocationView: View {
     var id: String;
     var rawImage: CGImage;
     var date: String;
+    var videos: [BaustelleLiveVideo]
     
     let magnification = Magnification(range: 1.0...5.0, initialValue: 1.0, isRelative: true)
     
     @State private var imageOpen = false;
     @State private var shouldShare = false;
-    
-    @State private var videosLoading = false;
-    @State private var videos: [BaustelleLiveVideo] = []
-    
+        
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -112,25 +110,6 @@ struct LocationView: View {
             }
         }
         .navigationTitle(location)
-        .onAppear {
-            loadData()
-        }
-    }
-    
-    func loadData() {
-        self.videosLoading = true
-        
-        let r = Just.get("https://latest.baustelle.live/videos_\(id).json")
-        
-        if (r.ok) {
-            print("request ok")
-            let decoder = JSONDecoder()
-            let videoData = try! decoder.decode(BaustelleLiveVideos.self, from: r.content!)
-            
-            self.videos = videoData.videos
-            
-            self.videosLoading = false
-        }
     }
 }
 
@@ -139,7 +118,7 @@ struct LocationView_Previews: PreviewProvider {
         Group {
             NavigationView {
                 let rawImage = UIImage(named: "li16")?.cgImage
-                LocationView(location: "Lindengasse 16", image: Image("li16"), id: "li16", rawImage: rawImage!, date: "23.08.2021, 19:14:11")
+                LocationView(location: "Lindengasse 16", image: Image("li16"), id: "li16", rawImage: rawImage!, date: "23.08.2021, 19:14:11", videos: BaustelleLiveApi.exampleResponse.li16.videos)
             }
             .previewDevice("iPod touch (7th generation)")
         }
