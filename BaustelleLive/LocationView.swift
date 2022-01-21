@@ -106,6 +106,7 @@ struct LocationView: View {
     }
 }
 
+#if DEBUG
 struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -117,3 +118,4 @@ struct LocationView_Previews: PreviewProvider {
         }
     }
 }
+#endif
