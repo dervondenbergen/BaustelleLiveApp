@@ -20,15 +20,6 @@
         }
       },
       {
-        "package": "Just",
-        "repositoryURL": "https://github.com/dduan/Just.git",
-        "state": {
-          "branch": null,
-          "revision": "1824bf84cf52d11d69ae20cfb89f0ce5bffa5650",
-          "version": "0.8.0"
-        }
-      },
-      {
         "package": "URLImage",
         "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
         "state": {

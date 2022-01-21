@@ -8,7 +8,6 @@
 import SwiftUI
 import AdvancedScrollView
 import URLImage
-import Just
 
 struct LocationView: View {
     var location: String;
@@ -22,93 +21,87 @@ struct LocationView: View {
     
     @State private var imageOpen = false;
     @State private var shouldShare = false;
-        
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                Button(action: {
-                    self.imageOpen = true;
-                }) {
+        List {
+            Button(action: {
+                self.imageOpen = true;
+            }) {
+                HStack {
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 128, height: 72)
+                        .cornerRadius(8.0)
+                        .clipped()
+                    
+                    Spacer()
+                    
+                    VStack(alignment: .leading) {
+                        Text("Letzte Aufnahme")
+                            .foregroundColor(.primary)
+                        Text(date)
+                    }
+                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                    
+                }
+            }
+            .listRowSeparator(.hidden)
+            .sheet(isPresented: $imageOpen, onDismiss: {
+                if (self.shouldShare) {
+                    
+                    let shareImg = UIImage(cgImage: rawImage)
+                    
+                    let text = "Schau was gerade auf der U2xU5 Baustelle in der Lindengasse passiert!\n\nAlle 10 Sekunden aktualisierende Bilder findet man unter https://latest.baustelle.live"
+                    
+                    let activityController = UIActivityViewController(activityItems: [shareImg, text], applicationActivities: nil)
+                    
+                    UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
+                    
+                    self.shouldShare = false
+                }
+            }, content: {
+                VStack {
                     HStack {
-                        image
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 128, height: 72)
-                            .cornerRadius(8.0)
-                            .clipped()
+                        Button(action: {
+                            self.imageOpen = false
+                        }) {
+                            Text("Schließen")
+                        }
                         
                         Spacer()
                         
-                        VStack(alignment: .leading) {
-                            Text("Letzte Aufnahme")
-                                .foregroundColor(.primary)
-                            Text(date)
-                        }
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                        Text(date)
                         
+                        Spacer()
+                        
+                        Button(action: {
+                            self.shouldShare = true;
+                            self.imageOpen = false;
+                            
+                        }) {
+                            Image(systemName: "square.and.arrow.up")
+                        }
+                    }
+                    .padding(16.0)
+                    AdvancedScrollView(magnification: magnification) { _ in
+                        image
                     }
                 }
-                .padding(16.0)
-                .frame(minHeight: 0, maxHeight: .infinity, alignment: .top)
-                .sheet(isPresented: $imageOpen, onDismiss: {
-                    if (self.shouldShare) {
-                        
-                        let shareImg = UIImage(cgImage: rawImage)
-                        
-                        let text = "Schau was gerade auf der U2xU5 Baustelle in der Lindengasse passiert!\n\nAlle 10 Sekunden aktualisierende Bilder findet man unter https://latest.baustelle.live"
-                        
-                        let activityController = UIActivityViewController(activityItems: [shareImg, text], applicationActivities: nil)
-                        
-                        UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
-                        
-                        self.shouldShare = false
-                    }
-                }, content: {
-                    VStack {
-                        HStack {
-                            Button(action: {
-                                self.imageOpen = false
-                            }) {
-                              Text("Schließen")
-                            }
-                            
-                            Spacer()
-                            
-                            Text(date)
-                            
-                            Spacer()
-                            
-                            Button(action: {
-                                self.shouldShare = true;
-                                self.imageOpen = false;
-                                
-                            }) {
-                                Image(systemName: "square.and.arrow.up")
-                            }
-                        }
-                        .padding(16.0)
-                        AdvancedScrollView(magnification: magnification) { _ in
-                            image
-                        }
-                    }
-                })
-                
-                Text("Videos")
-                    .font(.title)
-                    .padding(.horizontal, 16.0)
-                    .padding(.bottom, 8.0)
-                    .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                
-                
+            })
+            
+            Section(content: {
                 ForEach(videos) {video in
                     VideoItem(video: video)
+                        .listRowSeparator(.hidden)
                 }
-                .padding(.horizontal, 16.0)
-                .padding(.bottom, 16)
-                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                
-            }
+            }, header: {
+                Text("Videos")
+                    .font(.title)
+                    .foregroundColor(.accentColor)
+            })
         }
+        .listStyle(.plain)
         .navigationTitle(location)
     }
 }

@@ -15,7 +15,6 @@
 		DC829B5326CC2869000E446E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC829B5226CC2869000E446E /* ContentView.swift */; };
 		DC829B5526CC286B000E446E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC829B5426CC286B000E446E /* Assets.xcassets */; };
 		DC829B5826CC286B000E446E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC829B5726CC286B000E446E /* Preview Assets.xcassets */; };
-		DC829B6426CC29BA000E446E /* Just in Frameworks */ = {isa = PBXBuildFile; productRef = DC829B6326CC29BA000E446E /* Just */; };
 		DC829B6A26CC2FF0000E446E /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = DC829B6926CC2FF0000E446E /* URLImage */; };
 		DCB36EDA279ACDF20062D846 /* response.example.json in Resources */ = {isa = PBXBuildFile; fileRef = DCB36ED9279ACDF20062D846 /* response.example.json */; };
 		DCB36EDC279AD7F60062D846 /* PreviewApiResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB36EDB279AD7F50062D846 /* PreviewApiResponses.swift */; };
@@ -45,7 +44,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC829B6426CC29BA000E446E /* Just in Frameworks */,
 				DC829B6A26CC2FF0000E446E /* URLImage in Frameworks */,
 				DC64388E26D7CB5400266A1F /* AdvancedScrollView in Frameworks */,
 				DC64389326D7E27300266A1F /* DynamicColor in Frameworks */,
@@ -115,7 +113,6 @@
 			);
 			name = BaustelleLive;
 			packageProductDependencies = (
-				DC829B6326CC29BA000E446E /* Just */,
 				DC829B6926CC2FF0000E446E /* URLImage */,
 				DC64388D26D7CB5400266A1F /* AdvancedScrollView */,
 				DC64389226D7E27300266A1F /* DynamicColor */,
@@ -148,7 +145,6 @@
 			);
 			mainGroup = DC829B4426CC2869000E446E;
 			packageReferences = (
-				DC829B6226CC29BA000E446E /* XCRemoteSwiftPackageReference "Just" */,
 				DC829B6826CC2FF0000E446E /* XCRemoteSwiftPackageReference "url-image" */,
 				DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */,
 				DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */,
@@ -394,14 +390,6 @@
 				minimumVersion = 5.0.1;
 			};
 		};
-		DC829B6226CC29BA000E446E /* XCRemoteSwiftPackageReference "Just" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dduan/Just.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.8.0;
-			};
-		};
 		DC829B6826CC2FF0000E446E /* XCRemoteSwiftPackageReference "url-image" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
@@ -422,11 +410,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */;
 			productName = DynamicColor;
-		};
-		DC829B6326CC29BA000E446E /* Just */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DC829B6226CC29BA000E446E /* XCRemoteSwiftPackageReference "Just" */;
-			productName = Just;
 		};
 		DC829B6926CC2FF0000E446E /* URLImage */ = {
 			isa = XCSwiftPackageProductDependency;
