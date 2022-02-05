@@ -9,16 +9,25 @@ import Foundation
 
 struct BaustelleLiveApi: Codable {
     var li16: BaustelleLiveApiLocation!
-    var li27: BaustelleLiveApiLocation
+    var li27: BaustelleLiveApiLocation!
     var callout: String?
     var callout_test: String?
 }
 struct BaustelleLiveApiLocation: Codable {
     var id: String
-    var human: String
-    var imageUrl: String
-    var dateHash: String
+    var human: String?
+    var imageUrl: String?
+    var dateHash: String?
+    var error: BaustelleLiveApiError?
     var videos: [BaustelleLiveVideo]!
+}
+
+struct BaustelleLiveApiError: Codable {
+    var type: BaustelleLiveApiErrorType
+}
+
+enum BaustelleLiveApiErrorType: String, Codable {
+    case cameraoffline
 }
 
 struct BaustelleLiveVideo: Codable, Identifiable {

@@ -20,15 +20,22 @@ struct ContentView: View {
     var li16date: String {
         apiData?.li16.human ?? "Datum lädt …"
     }
+    var li16Error: BaustelleLiveApiError? {
+        apiData?.li16.error
+    }
     var li27: URL {
         URL(string: apiData?.li27.imageUrl ?? "https://latest.baustelle.live/li27.jpg")!
     }
     var li27date: String {
         apiData?.li27.human ?? "Datum lädt …"
     }
+    var li27Error: BaustelleLiveApiError? {
+        apiData?.li27.error
+    }
     
     
-    @State var isLoading = false
+    @State var isLoading = true
+    @State var apiError = false
     
     @State var apiData: BaustelleLiveApi?
     
@@ -53,60 +60,87 @@ struct ContentView: View {
                         
                     }
                     
+                    if (li27Error != nil || li16Error != nil) {
+                        Text("Zur Zeit gibt es Probleme, es wird bereits daran gearbeitet.")
+                            .fontWeight(.regular)
+                            .foregroundColor(Color.black)
+                            .padding(10)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .background(Color("CalloutBackground"))
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color("CalloutBorder"), lineWidth: 4)
+                            )
+                            .listRowInsets(.init(top: 2, leading: 2, bottom: 2, trailing: 2))
+                            .listRowSeparator(.hidden)
+                    }
+                    
                     Section {
                         
                         Text("Lindengasse 16")
                             .font(.title)
                             .listRowSeparator(.hidden)
                         
-                        ZStack {
-                            
-                            URLImage(li16) {
-                                // This view is displayed before download starts
-                                EmptyView()
-                            } inProgress: { progress in
-                                // Display progress
-                                VStack {
-                                    Spacer()
-                                    Text("Lädt...")
-                                        .foregroundColor(.white)
-                                    Spacer()
+                        if (li16Error == nil) {
+                            ZStack {
+                                
+                                URLImage(li16) {
+                                    // This view is displayed before download starts
+                                    EmptyView()
+                                } inProgress: { progress in
+                                    // Display progress
+                                    VStack {
+                                        Spacer()
+                                        Text("Lädt...")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                    }
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(4 / 3, contentMode: .fit)
+                                    .background(Color.gray)
+                                } failure: { error, retry in
+                                    // Display error and retry button
+                                    VStack {
+                                        Text(error.localizedDescription)
+                                        Button("Retry", action: {
+                                            retry()
+                                        })
+                                    }
+                                } content: { image, info in
+                                    ZStack {
+                                        NavigationLink(destination: LocationView(
+                                            location: "Lindengasse 16",
+                                            image: image,
+                                            id: "li16",
+                                            rawImage: info.cgImage,
+                                            date: li16date,
+                                            videos: apiData!.li16.videos
+                                        )) {}
+                                        
+                                        image
+                                            .resizable()
+                                            .aspectRatio(4 / 3, contentMode: .fit)
+                                    }
                                 }
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .aspectRatio(4 / 3, contentMode: .fit)
-                                .background(Color.gray)
-                            } failure: { error, retry in
-                                // Display error and retry button
-                                VStack {
-                                    Text(error.localizedDescription)
-                                    Button("Retry", action: {
-                                        retry()
-                                    })
-                                }
-                            } content: { image, info in
-                                ZStack {
-                                    NavigationLink(destination: LocationView(
-                                        location: "Lindengasse 16",
-                                        image: image,
-                                        id: "li16",
-                                        rawImage: info.cgImage,
-                                        date: li16date,
-                                        videos: apiData!.li16.videos
-                                    )) {}
-                                    
-                                    image
-                                        .resizable()
-                                        .aspectRatio(4 / 3, contentMode: .fit)
-                                }
+                                
                             }
-                            
-                        }
-                        .listRowInsets(.init())
-                        .listRowSeparator(.hidden)
-                        
-                        
-                        Text(li16date)
+                            .listRowInsets(.init())
                             .listRowSeparator(.hidden)
+                            
+                            
+                            Text(li16date)
+                                .listRowSeparator(.hidden)
+                        } else {
+                            switch li16Error?.type {
+                            case .cameraoffline:
+                                Text("Die Kamera Lindengasse 16 ist zur Zeit offline.")
+                                    .listRowSeparator(.hidden)
+                            default:
+                                Text("Zur Zeit gibt es Probleme mit der Kamera Lindengasse 16")
+                                    .listRowSeparator(.hidden)
+                            }
+                        }
                         
                     }
                     .listSectionSeparator(.hidden)
@@ -115,60 +149,77 @@ struct ContentView: View {
                         Text("Lindengasse 27")
                             .font(.title)
                         
-                        ZStack {
-                            URLImage(li27) {
-                                // This view is displayed before download starts
-                                EmptyView()
-                            } inProgress: { progress in
-                                // Display progress
-                                VStack {
-                                    Spacer()
-                                    Text("Lädt...")
-                                        .foregroundColor(.white)
-                                    Spacer()
-                                }
-                                .frame(minWidth: 0, maxWidth: .infinity)
-                                .aspectRatio(16 / 9, contentMode: .fit)
-                                .background(Color.gray)
-                            } failure: { error, retry in
-                                // Display error and retry button
-                                VStack {
-                                    Text(error.localizedDescription)
-                                    Button("Retry", action: {
-                                        retry()
-                                    })
-                                }
-                            } content: { image, info in
-                                ZStack {
-                                    NavigationLink(destination: LocationView(
-                                        location: "Lindengasse 27",
-                                        image: image,
-                                        id: "li27",
-                                        rawImage: info.cgImage,
-                                        date: li27date,
-                                        videos: apiData!.li27.videos
-                                    )) {}
-                                    
-                                    image
-                                        .resizable()
-                                        .aspectRatio(16 / 9, contentMode: .fit)
+                        if (li27Error == nil) {
+                            ZStack {
+                                URLImage(li27) {
+                                    // This view is displayed before download starts
+                                    EmptyView()
+                                } inProgress: { progress in
+                                    // Display progress
+                                    VStack {
+                                        Spacer()
+                                        Text("Lädt...")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                    }
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(16 / 9, contentMode: .fit)
+                                    .background(Color.gray)
+                                } failure: { error, retry in
+                                    // Display error and retry button
+                                    VStack {
+                                        Text(error.localizedDescription)
+                                        Button("Retry", action: {
+                                            retry()
+                                        })
+                                    }
+                                } content: { image, info in
+                                    ZStack {
+                                        NavigationLink(destination: LocationView(
+                                            location: "Lindengasse 27",
+                                            image: image,
+                                            id: "li27",
+                                            rawImage: info.cgImage,
+                                            date: li27date,
+                                            videos: apiData!.li27.videos
+                                        )) {}
+                                        
+                                        image
+                                            .resizable()
+                                            .aspectRatio(16 / 9, contentMode: .fit)
+                                    }
                                 }
                             }
-                        }
-                        .listRowInsets(.init())
-                        .listRowSeparator(.hidden)
-                        
-                        
-                        Text(li27date)
+                            .listRowInsets(.init())
                             .listRowSeparator(.hidden)
+                            
+                            Text(li27date)
+                                .listRowSeparator(.hidden)
+                        } else {
+                            switch li27Error?.type {
+                            case .cameraoffline:
+                                Text("Die Kamera Lindengasse 27 ist zur Zeit offline.")
+                                    .listRowSeparator(.hidden)
+                            default:
+                                Text("Zur Zeit gibt es Probleme mit der Kamera Lindengasse 27")
+                                    .listRowSeparator(.hidden)
+                            }
+                        }
                         
                     }
                     .listSectionSeparator(.hidden)
                     
                     
+                } else if (apiError) {
+                    Text("Es gibt Probleme mit den Daten. Probiere es später nochmal 🤕")
+                        .listRowSeparator(.hidden)
                 } else {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                    HStack {
+                        Text("Daten werden geladen")
+                        Spacer()
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: .accentColor))
+                    }
                 }
             }
             .refreshable {
@@ -188,14 +239,17 @@ struct ContentView: View {
     
     func loadData() async {
         self.isLoading = true
+        self.apiError = false
         
         do {
             let (jsonData, _) = try await URLSession.shared.data(from: baustelleLiveApi)
             self.apiData = try JSONDecoder().decode(BaustelleLiveApi.self, from: jsonData)
             self.isLoading = false
+            self.apiError = false
         } catch {
             self.apiData = nil
             self.isLoading = false
+            self.apiError = true
         }
     }
 }
