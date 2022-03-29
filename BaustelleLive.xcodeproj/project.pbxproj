@@ -27,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		DC3A287627F39C0600039262 /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
+		DC3A287827F3C04700039262 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaustelleLiveApi.swift; sourceTree = "<group>"; };
 		DC64388F26D7D63700266A1F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC829B4D26CC2869000E446E /* BaustelleLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaustelleLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -60,6 +61,7 @@
 		DC829B4426CC2869000E446E = {
 			isa = PBXGroup;
 			children = (
+				DC3A287827F3C04700039262 /* README.md */,
 				DC829B4F26CC2869000E446E /* BaustelleLive */,
 				DC829B4E26CC2869000E446E /* Products */,
 			);
