@@ -16,6 +16,8 @@
 		DC829B5526CC286B000E446E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC829B5426CC286B000E446E /* Assets.xcassets */; };
 		DC829B5826CC286B000E446E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC829B5726CC286B000E446E /* Preview Assets.xcassets */; };
 		DC829B6A26CC2FF0000E446E /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = DC829B6926CC2FF0000E446E /* URLImage */; };
+		DC8A4B3227D4AFC900A4FF9F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8A4B3127D4AFC900A4FF9F /* SettingsView.swift */; };
+		DC8C936027F35D7400AAF4D4 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = DC8C935F27F35D7400AAF4D4 /* SwiftUIX */; };
 		DCB36EDA279ACDF20062D846 /* response.example.json in Resources */ = {isa = PBXBuildFile; fileRef = DCB36ED9279ACDF20062D846 /* response.example.json */; };
 		DCB36EDC279AD7F60062D846 /* PreviewApiResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB36EDB279AD7F50062D846 /* PreviewApiResponses.swift */; };
 		DCB36EDE279AD90E0062D846 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB36EDD279AD90E0062D846 /* helpers.swift */; };
@@ -32,6 +34,7 @@
 		DC829B5426CC286B000E446E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DC829B5726CC286B000E446E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DC829B5926CC286B000E446E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC8A4B3127D4AFC900A4FF9F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		DCB36ED9279ACDF20062D846 /* response.example.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = response.example.json; sourceTree = "<group>"; };
 		DCB36EDB279AD7F50062D846 /* PreviewApiResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewApiResponses.swift; sourceTree = "<group>"; };
 		DCB36EDD279AD90E0062D846 /* helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 				DC829B6A26CC2FF0000E446E /* URLImage in Frameworks */,
 				DC64388E26D7CB5400266A1F /* AdvancedScrollView in Frameworks */,
 				DC64389326D7E27300266A1F /* DynamicColor in Frameworks */,
+				DC8C936027F35D7400AAF4D4 /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 				DC829B5926CC286B000E446E /* Info.plist */,
 				DC829B5626CC286B000E446E /* Preview Content */,
 				DCC2899326D7C2EC00281E50 /* VideoItem.swift */,
+				DC8A4B3127D4AFC900A4FF9F /* SettingsView.swift */,
 			);
 			path = BaustelleLive;
 			sourceTree = "<group>";
@@ -116,6 +121,7 @@
 				DC829B6926CC2FF0000E446E /* URLImage */,
 				DC64388D26D7CB5400266A1F /* AdvancedScrollView */,
 				DC64389226D7E27300266A1F /* DynamicColor */,
+				DC8C935F27F35D7400AAF4D4 /* SwiftUIX */,
 			);
 			productName = BaustelleLive;
 			productReference = DC829B4D26CC2869000E446E /* BaustelleLive.app */;
@@ -148,6 +154,7 @@
 				DC829B6826CC2FF0000E446E /* XCRemoteSwiftPackageReference "url-image" */,
 				DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */,
 				DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */,
+				DC8C935E27F35D7400AAF4D4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = DC829B4E26CC2869000E446E /* Products */;
 			projectDirPath = "";
@@ -179,6 +186,7 @@
 				DCC2899426D7C2EC00281E50 /* VideoItem.swift in Sources */,
 				DC5D9BEF26D40C1D00ED1427 /* BaustelleLiveApi.swift in Sources */,
 				DCB36EDC279AD7F60062D846 /* PreviewApiResponses.swift in Sources */,
+				DC8A4B3227D4AFC900A4FF9F /* SettingsView.swift in Sources */,
 				DCB36EDE279AD90E0062D846 /* helpers.swift in Sources */,
 				DC829B5326CC2869000E446E /* ContentView.swift in Sources */,
 				DCD82A8526D3D50100FCE6B8 /* LocationView.swift in Sources */,
@@ -398,6 +406,14 @@
 				minimumVersion = 3.1.0;
 			};
 		};
+		DC8C935E27F35D7400AAF4D4 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -415,6 +431,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC829B6826CC2FF0000E446E /* XCRemoteSwiftPackageReference "url-image" */;
 			productName = URLImage;
+		};
+		DC8C935F27F35D7400AAF4D4 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC8C935E27F35D7400AAF4D4 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

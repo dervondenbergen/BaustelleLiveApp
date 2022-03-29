@@ -8,6 +8,7 @@
 import SwiftUI
 import AdvancedScrollView
 import URLImage
+import SwiftUIX
 
 struct LocationView: View {
     var location: String;
@@ -47,59 +48,55 @@ struct LocationView: View {
                 }
             }
             .listRowSeparator(.hidden)
-            .sheet(isPresented: $imageOpen, onDismiss: {
-                if (self.shouldShare) {
-                    
-                    let shareImg = UIImage(cgImage: rawImage)
-                    
-                    let text = "Schau was gerade auf der U2xU5 Baustelle in der Lindengasse passiert!\n\nAlle 10 Sekunden aktualisierende Bilder findet man unter https://latest.baustelle.live"
-                    
-                    let activityController = UIActivityViewController(activityItems: [shareImg, text], applicationActivities: nil)
-                    
-                    UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
-                    
-                    self.shouldShare = false
-                }
-            }, content: {
-                VStack {
-                    HStack {
-                        Button(action: {
-                            self.imageOpen = false
-                        }) {
-                            Text("Schließen")
-                        }
-                        
-                        Spacer()
-                        
-                        Text(date)
-                        
-                        Spacer()
-                        
-                        Button(action: {
-                            self.shouldShare = true;
-                            self.imageOpen = false;
-                            
-                        }) {
-                            Image(systemName: "square.and.arrow.up")
-                        }
-                    }
-                    .padding(16.0)
+            .sheet(isPresented: $imageOpen, content: {
+                NavigationView {
                     AdvancedScrollView(magnification: magnification) { _ in
                         image
                     }
+                    .toolbar {
+                        ToolbarItem(placement: .navigation) {
+                            Button(action: {
+                                self.imageOpen = false
+                            }) {
+                                Text("Schließen")
+                            }
+                        }
+                        
+                        ToolbarItem(placement: .principal) {
+                            Text(date)
+                        }
+                        
+                        ToolbarItem(placement: .primaryAction) {
+                            Button(action: {
+                                self.shouldShare.toggle();
+                            }, label: {
+                                Image(systemName: "square.and.arrow.up")
+                            })
+                            .sheet(isPresented: $shouldShare) {
+                                let shareImg = UIImage(cgImage: rawImage)
+                                
+                                let text = "Schau was gerade auf der U2xU5 Baustelle in der Lindengasse passiert!\n\nAlle 10 Sekunden aktualisierende Bilder findet man unter https://latest.baustelle.live"
+                                
+                                AppActivityView(activityItems: [shareImg, text], applicationActivities: nil)
+                            }
+                        }
+                    }
                 }
+                .navigationViewStyle(StackNavigationViewStyle())
             })
             
-            Section(content: {
+            let sectionHeader = {
+                Text("Videos")
+                    .font(.title)
+                    .foregroundColor(.accentColor)
+            }()
+            
+            Section(header: sectionHeader) {
                 ForEach(videos) {video in
                     VideoItem(video: video)
                         .listRowSeparator(.hidden)
                 }
-            }, header: {
-                Text("Videos")
-                    .font(.title)
-                    .foregroundColor(.accentColor)
-            })
+            }
         }
         .listStyle(.plain)
         .navigationTitle(location)

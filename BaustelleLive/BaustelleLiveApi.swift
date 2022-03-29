@@ -12,6 +12,7 @@ struct BaustelleLiveApi: Codable {
     var li27: BaustelleLiveApiLocation!
     var callout: String?
     var callout_test: String?
+    var live: Bool?
 }
 struct BaustelleLiveApiLocation: Codable {
     var id: String
@@ -20,6 +21,7 @@ struct BaustelleLiveApiLocation: Codable {
     var dateHash: String?
     var error: BaustelleLiveApiError?
     var videos: [BaustelleLiveVideo]!
+    var live: Bool?
 }
 
 struct BaustelleLiveApiError: Codable {

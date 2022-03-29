@@ -11,6 +11,7 @@ import URLImage
 struct ContentView: View {
     var baustelleLiveApi = URL(string: "https://latest.baustelle.live/api.json")!
     
+    // MARK: Data Variables
     var callout: String? {
         apiData?.callout
     }
@@ -38,6 +39,18 @@ struct ContentView: View {
     @State var apiError = false
     
     @State var apiData: BaustelleLiveApi?
+    
+    // MARK: Settings Variables
+    @State var showSettingsView = false
+    
+    // MARK: Data Refresh Variables
+    @AppStorage("shouldReload") var shouldReload: Bool = false
+    var reloadTimeInSeconds: TimeInterval {
+        apiData?.live == true ? 10.0 : 120.0
+    }
+    @State var reloadTimer: Timer?
+    
+    @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
         NavigationView {
@@ -109,6 +122,7 @@ struct ContentView: View {
                                     }
                                 } content: { image, info in
                                     ZStack {
+                                        // FIXME: move navigation link outside, to prevent reloading, when image reloads
                                         NavigationLink(destination: LocationView(
                                             location: "Lindengasse 16",
                                             image: image,
@@ -175,6 +189,7 @@ struct ContentView: View {
                                     }
                                 } content: { image, info in
                                     ZStack {
+                                        // FIXME: move navigation link outside, to prevent reloading, when image reloads
                                         NavigationLink(destination: LocationView(
                                             location: "Lindengasse 27",
                                             image: image,
@@ -226,15 +241,49 @@ struct ContentView: View {
                 await loadData()
             }
             .navigationTitle("baustelle.live")
-            .navigationBarTitle("test")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showSettingsView = true
+                    }) {
+                        Label("Einstellungen", systemImage: "gear")
+                    }.sheet(isPresented: $showSettingsView) {
+                        SettingsView()
+                    }
+                }
+            }
             
         }
+        .task {
+            await loadData()
+        }
         .onAppear {
-            Task {
-                await loadData()
+            print("onAppear")
+        }
+        .onChange(of: scenePhase) { newPhase in
+            // https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-when-your-app-moves-to-the-background-or-foreground-with-scenephase
+            if newPhase == .active {
+                print("Active")
+                // is in foreground, (re)start automatic updating and immediately fetch update
+                
+                // https://www.hackingwithswift.com/articles/117/the-ultimate-guide-to-timer
+                // https://developer.apple.com/documentation/foundation/userdefaults
+                // https://www.hackingwithswift.com/books/ios-swiftui/storing-user-settings-with-userdefaults
+                
+                if shouldReload {
+                    reloadTimer = Timer.scheduledTimer(withTimeInterval: reloadTimeInSeconds, repeats: true) { _ in
+                        Task {
+                            await self.loadData()
+                        }
+                    }
+                }
+            } else if newPhase == .background {
+                print("Background")
+                
+                reloadTimer?.invalidate()
+                // is in background, stop outomatic updating
             }
         }
-        
     }
     
     func loadData() async {
