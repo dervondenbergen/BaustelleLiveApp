@@ -1,43 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "AdvancedScrollView",
-        "repositoryURL": "https://github.com/herrernst/advanced-scrollview",
-        "state": {
-          "branch": "fix-build-for-other-platforms",
-          "revision": "c4480eb49b29d77a955d82a3f76d16e1b8fa80a6",
-          "version": null
-        }
-      },
-      {
-        "package": "DynamicColor",
-        "repositoryURL": "https://github.com/yannickl/DynamicColor.git",
-        "state": {
-          "branch": null,
-          "revision": "d9beca13ca85baa50ee29832d0db5129fba69630",
-          "version": "5.0.1"
-        }
-      },
-      {
-        "package": "SwiftUIX",
-        "repositoryURL": "https://github.com/SwiftUIX/SwiftUIX",
-        "state": {
-          "branch": null,
-          "revision": "889c781539cdd1e6a1111472c711082522aa35c6",
-          "version": "0.1.2"
-        }
-      },
-      {
-        "package": "URLImage",
-        "repositoryURL": "https://github.com/dmytro-anokhin/url-image",
-        "state": {
-          "branch": null,
-          "revision": "a55b6597f6ce67dfbdc136ecfb8c8436b14ca41d",
-          "version": "3.1.0"
-        }
+  "pins" : [
+    {
+      "identity" : "dynamiccolor",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yannickl/DynamicColor.git",
+      "state" : {
+        "revision" : "d9beca13ca85baa50ee29832d0db5129fba69630",
+        "version" : "5.0.1"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "swiftuix",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftUIX/SwiftUIX",
+      "state" : {
+        "revision" : "889c781539cdd1e6a1111472c711082522aa35c6",
+        "version" : "0.1.2"
+      }
+    },
+    {
+      "identity" : "url-image",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dmytro-anokhin/url-image",
+      "state" : {
+        "revision" : "a55b6597f6ce67dfbdc136ecfb8c8436b14ca41d",
+        "version" : "3.1.0"
+      }
+    }
+  ],
+  "version" : 2
 }

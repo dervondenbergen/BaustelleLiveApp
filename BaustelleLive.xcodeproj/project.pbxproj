@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC3A287727F39C0600039262 /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A287627F39C0600039262 /* QuickLookView.swift */; };
 		DC5D9BEF26D40C1D00ED1427 /* BaustelleLiveApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */; };
-		DC64388E26D7CB5400266A1F /* AdvancedScrollView in Frameworks */ = {isa = PBXBuildFile; productRef = DC64388D26D7CB5400266A1F /* AdvancedScrollView */; };
 		DC64389026D7D63700266A1F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64388F26D7D63700266A1F /* Category.swift */; };
 		DC64389326D7E27300266A1F /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = DC64389226D7E27300266A1F /* DynamicColor */; };
 		DC829B5126CC2869000E446E /* BaustelleLiveApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC829B5026CC2869000E446E /* BaustelleLiveApp.swift */; };
@@ -26,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC3A287627F39C0600039262 /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
 		DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaustelleLiveApi.swift; sourceTree = "<group>"; };
 		DC64388F26D7D63700266A1F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC829B4D26CC2869000E446E /* BaustelleLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaustelleLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +49,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC829B6A26CC2FF0000E446E /* URLImage in Frameworks */,
-				DC64388E26D7CB5400266A1F /* AdvancedScrollView in Frameworks */,
 				DC64389326D7E27300266A1F /* DynamicColor in Frameworks */,
 				DC8C936027F35D7400AAF4D4 /* SwiftUIX in Frameworks */,
 			);
@@ -86,6 +86,7 @@
 				DC829B5626CC286B000E446E /* Preview Content */,
 				DCC2899326D7C2EC00281E50 /* VideoItem.swift */,
 				DC8A4B3127D4AFC900A4FF9F /* SettingsView.swift */,
+				DC3A287627F39C0600039262 /* QuickLookView.swift */,
 			);
 			path = BaustelleLive;
 			sourceTree = "<group>";
@@ -119,7 +120,6 @@
 			name = BaustelleLive;
 			packageProductDependencies = (
 				DC829B6926CC2FF0000E446E /* URLImage */,
-				DC64388D26D7CB5400266A1F /* AdvancedScrollView */,
 				DC64389226D7E27300266A1F /* DynamicColor */,
 				DC8C935F27F35D7400AAF4D4 /* SwiftUIX */,
 			);
@@ -152,7 +152,6 @@
 			mainGroup = DC829B4426CC2869000E446E;
 			packageReferences = (
 				DC829B6826CC2FF0000E446E /* XCRemoteSwiftPackageReference "url-image" */,
-				DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */,
 				DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */,
 				DC8C935E27F35D7400AAF4D4 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
@@ -184,6 +183,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCC2899426D7C2EC00281E50 /* VideoItem.swift in Sources */,
+				DC3A287727F39C0600039262 /* QuickLookView.swift in Sources */,
 				DC5D9BEF26D40C1D00ED1427 /* BaustelleLiveApi.swift in Sources */,
 				DCB36EDC279AD7F60062D846 /* PreviewApiResponses.swift in Sources */,
 				DC8A4B3227D4AFC900A4FF9F /* SettingsView.swift in Sources */,
@@ -382,14 +382,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/herrernst/advanced-scrollview";
-			requirement = {
-				branch = "fix-build-for-other-platforms";
-				kind = branch;
-			};
-		};
 		DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yannickl/DynamicColor.git";
@@ -417,11 +409,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		DC64388D26D7CB5400266A1F /* AdvancedScrollView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = DC64388C26D7CB5400266A1F /* XCRemoteSwiftPackageReference "advanced-scrollview" */;
-			productName = AdvancedScrollView;
-		};
 		DC64389226D7E27300266A1F /* DynamicColor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */;
