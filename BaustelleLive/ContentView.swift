@@ -242,6 +242,12 @@ struct ContentView: View {
             }
             .navigationTitle("baustelle.live")
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    if shouldReload {
+                        Image(systemName: "circle.fill").foregroundColor(Color.red)
+                    }
+                }
+            
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         showSettingsView = true
@@ -259,11 +265,15 @@ struct ContentView: View {
         }
         .onAppear {
             print("onAppear")
+            if shouldReload {
+                print("onAppear shouldReload")
+                setReloadTimer()
+            }
         }
         .onChange(of: scenePhase) { newPhase in
             // https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-when-your-app-moves-to-the-background-or-foreground-with-scenephase
             if newPhase == .active {
-                print("Active")
+                print("scenePase active")
                 // is in foreground, (re)start automatic updating and immediately fetch update
                 
                 // https://www.hackingwithswift.com/articles/117/the-ultimate-guide-to-timer
@@ -271,19 +281,35 @@ struct ContentView: View {
                 // https://www.hackingwithswift.com/books/ios-swiftui/storing-user-settings-with-userdefaults
                 
                 if shouldReload {
-                    reloadTimer = Timer.scheduledTimer(withTimeInterval: reloadTimeInSeconds, repeats: true) { _ in
-                        Task {
-                            await self.loadData()
-                        }
-                    }
+                    setReloadTimer()
                 }
             } else if newPhase == .background {
-                print("Background")
+                print("scenePase background")
                 
-                reloadTimer?.invalidate()
+                removeReloadTimer()
                 // is in background, stop outomatic updating
             }
         }
+        .onChange(of: shouldReload) { newShouldReload in
+            print("shouldReload \(newShouldReload)")
+            if newShouldReload {
+                setReloadTimer()
+            } else {
+                removeReloadTimer()
+            }
+        }
+    }
+    
+    func setReloadTimer() {
+        reloadTimer = Timer.scheduledTimer(withTimeInterval: reloadTimeInSeconds, repeats: true) { _ in
+            Task {
+                await self.loadData()
+            }
+        }
+    }
+    
+    func removeReloadTimer() {
+        reloadTimer?.invalidate()
     }
     
     func loadData() async {
