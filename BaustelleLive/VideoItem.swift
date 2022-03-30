@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import URLImage
 
 struct VideoItem: View {
     var video: BaustelleLiveVideo!
@@ -14,11 +13,14 @@ struct VideoItem: View {
     var body: some View {
         Link(destination: URL(string: "https://youtube.com/watch?v=\(video.id)&list=\(video.playlist)")!, label: {
             HStack {
-                URLImage(video.thumb) {
-                    // This view is displayed before download starts
-                    EmptyView()
-                } inProgress: { progress in
-                    // Display progress
+                AsyncImage(url: video.thumb, content: { image in
+                    image
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 128, height: 72)
+                        .cornerRadius(8.0)
+                        .clipped()
+                }, placeholder: {
                     VStack {
                         Spacer()
                         ProgressView()
@@ -28,17 +30,7 @@ struct VideoItem: View {
                     .frame(width: 128, height: 72)
                     .background(Color.gray)
                     .cornerRadius(8.0)
-                } failure: { error, retry in
-                    // Display error and retry button
-                } content: { image, info in
-                    image
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 128, height: 72)
-                        .cornerRadius(8.0)
-                        .clipped()
-                    
-                }
+                })
                 
                 VStack(alignment: .leading, spacing: 3) {
                     Text(video.date)
