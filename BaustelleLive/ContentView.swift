@@ -7,6 +7,7 @@
 
 import SwiftUI
 import URLImage
+import SDWebImage
 
 struct ContentView: View {
     var baustelleLiveApi = URL(string: "https://latest.baustelle.live/api.json")!
@@ -24,6 +25,11 @@ struct ContentView: View {
     var li16Error: BaustelleLiveApiError? {
         apiData?.li16.error
     }
+    @State var li16Image: LocationImage?
+    @State var li16ImageError: Bool = false
+    @State var li16ImageProgress: Int?
+    @State var li16LocationViewOpen: Bool = false
+    
     var li27: URL {
         URL(string: apiData?.li27.imageUrl ?? "https://latest.baustelle.live/li27.jpg")!
     }
@@ -33,7 +39,10 @@ struct ContentView: View {
     var li27Error: BaustelleLiveApiError? {
         apiData?.li27.error
     }
-    
+    @State var li27Image: LocationImage?
+    @State var li27ImageError: Bool = false
+    @State var li27ImageProgress: Int?
+    @State var li27LocationViewOpen: Bool = false
     
     @State var isLoading = true
     @State var apiError = false
@@ -97,47 +106,47 @@ struct ContentView: View {
                         
                         if (li16Error == nil) {
                             ZStack {
-                                
-                                URLImage(li16) {
-                                    // This view is displayed before download starts
-                                    EmptyView()
-                                } inProgress: { progress in
-                                    // Display progress
+                                if li16ImageProgress != nil {
                                     VStack {
                                         Spacer()
-                                        Text("Lädt...")
+                                        Text("Lädt… \(li16ImageProgress!)%")
                                             .foregroundColor(.white)
                                         Spacer()
                                     }
                                     .frame(minWidth: 0, maxWidth: .infinity)
                                     .aspectRatio(4 / 3, contentMode: .fit)
                                     .background(Color.gray)
-                                } failure: { error, retry in
-                                    // Display error and retry button
+                                }
+                                
+                                if li16ImageError {
                                     VStack {
-                                        Text(error.localizedDescription)
-                                        Button("Retry", action: {
-                                            retry()
-                                        })
+                                        Spacer()
+                                        Text("Fehler beim herunterladen vom Bild")
+                                            .foregroundColor(.white)
+                                        Spacer()
                                     }
-                                } content: { image, info in
-                                    ZStack {
-                                        // FIXME: move navigation link outside, to prevent reloading, when image reloads
-                                        NavigationLink(destination: LocationView(
-                                            location: "Lindengasse 16",
-                                            image: image,
-                                            id: "li16",
-                                            rawImage: info.cgImage,
-                                            date: li16date,
-                                            videos: apiData!.li16.videos
-                                        )) {}
-                                        
-                                        image
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(4 / 3, contentMode: .fit)
+                                    .background(Color.gray)
+                                }
+                                
+                                if li16Image != nil {
+                                    Button(action: {
+                                        li16LocationViewOpen.toggle()
+                                    }) {
+                                        Image(uiImage: li16Image!.uiImage)
                                             .resizable()
                                             .aspectRatio(4 / 3, contentMode: .fit)
                                     }
+                                    
+                                    NavigationLink(destination: LocationView(
+                                        location: "Lindengasse 16",
+                                        image: li16Image!,
+                                        id: "li16",
+                                        date: li16date,
+                                        videos: apiData!.li16.videos
+                                    ), isActive: $li16LocationViewOpen) {}
                                 }
-                                
                             }
                             .listRowInsets(.init())
                             .listRowSeparator(.hidden)
@@ -165,44 +174,46 @@ struct ContentView: View {
                         
                         if (li27Error == nil) {
                             ZStack {
-                                URLImage(li27) {
-                                    // This view is displayed before download starts
-                                    EmptyView()
-                                } inProgress: { progress in
-                                    // Display progress
+                                if li27ImageProgress != nil {
                                     VStack {
                                         Spacer()
-                                        Text("Lädt...")
+                                        Text("Lädt… \(li27ImageProgress!)%")
                                             .foregroundColor(.white)
                                         Spacer()
                                     }
                                     .frame(minWidth: 0, maxWidth: .infinity)
                                     .aspectRatio(16 / 9, contentMode: .fit)
                                     .background(Color.gray)
-                                } failure: { error, retry in
-                                    // Display error and retry button
+                                }
+                                
+                                if li27ImageError {
                                     VStack {
-                                        Text(error.localizedDescription)
-                                        Button("Retry", action: {
-                                            retry()
-                                        })
+                                        Spacer()
+                                        Text("Fehler beim herunterladen vom Bild")
+                                            .foregroundColor(.white)
+                                        Spacer()
                                     }
-                                } content: { image, info in
-                                    ZStack {
-                                        // FIXME: move navigation link outside, to prevent reloading, when image reloads
-                                        NavigationLink(destination: LocationView(
-                                            location: "Lindengasse 27",
-                                            image: image,
-                                            id: "li27",
-                                            rawImage: info.cgImage,
-                                            date: li27date,
-                                            videos: apiData!.li27.videos
-                                        )) {}
-                                        
-                                        image
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(16 / 9, contentMode: .fit)
+                                    .background(Color.gray)
+                                }
+                                
+                                if li27Image != nil {
+                                    Button(action: {
+                                        li27LocationViewOpen.toggle()
+                                    }) {
+                                        Image(uiImage: li27Image!.uiImage)
                                             .resizable()
                                             .aspectRatio(16 / 9, contentMode: .fit)
                                     }
+                                    
+                                    NavigationLink(destination: LocationView(
+                                        location: "Lindengasse 27",
+                                        image: li27Image!,
+                                        id: "li27",
+                                        date: li27date,
+                                        videos: apiData!.li27.videos
+                                    ), isActive: $li27LocationViewOpen) {}
                                 }
                             }
                             .listRowInsets(.init())
@@ -321,10 +332,68 @@ struct ContentView: View {
             self.apiData = try JSONDecoder().decode(BaustelleLiveApi.self, from: jsonData)
             self.isLoading = false
             self.apiError = false
+            
+            loadImages()
         } catch {
             self.apiData = nil
             self.isLoading = false
             self.apiError = true
+        }
+    }
+    
+    func loadImages() {
+        if li16Error == nil {
+            SDWebImageManager.shared.loadImage(
+                with: li16,
+                options: [.queryMemoryData],
+                progress: { receivedSize, expectedSize, url in
+                    //Progress tracking code
+                    li16ImageProgress = expectedSize / max(1, receivedSize)
+                },
+                completed: { image, data, error, cacheType, finished, url in
+                    guard error == nil else {
+                        li16ImageError = true
+                        li16ImageProgress = nil
+                        li16Image = nil
+                        
+                        return
+                    }
+                    
+                    li16ImageError = false
+                    li16ImageProgress = nil
+                    
+                    if let data = data {
+                        li16Image = LocationImage(uiImage: image!, rawImageData: data)
+                    }
+                }
+            )
+        }
+        
+        if li27Error == nil {
+            SDWebImageManager.shared.loadImage(
+                with: li27,
+                options: [.queryMemoryData],
+                progress: { receivedSize, expectedSize, url in
+                    //Progress tracking code
+                    li27ImageProgress = expectedSize / max(1, receivedSize)
+                },
+                completed: { image, data, error, cacheType, finished, url in
+                    guard error == nil else {
+                        li27ImageError = true
+                        li27ImageProgress = nil
+                        li27Image = nil
+                        
+                        return
+                    }
+                    
+                    li27ImageError = false
+                    li27ImageProgress = nil
+                    
+                    if let data = data {
+                        li27Image = LocationImage(uiImage: image!, rawImageData: data)
+                    }
+                }
+            )
         }
     }
 }

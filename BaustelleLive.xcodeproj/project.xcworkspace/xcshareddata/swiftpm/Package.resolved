@@ -10,21 +10,21 @@
       }
     },
     {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage",
+      "state" : {
+        "revision" : "2e63d0061da449ad0ed130768d05dceb1496de44",
+        "version" : "5.12.5"
+      }
+    },
+    {
       "identity" : "swiftuix",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftUIX/SwiftUIX",
       "state" : {
         "revision" : "889c781539cdd1e6a1111472c711082522aa35c6",
         "version" : "0.1.2"
-      }
-    },
-    {
-      "identity" : "url-image",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/dmytro-anokhin/url-image",
-      "state" : {
-        "revision" : "a55b6597f6ce67dfbdc136ecfb8c8436b14ca41d",
-        "version" : "3.1.0"
       }
     }
   ],

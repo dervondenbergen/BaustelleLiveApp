@@ -9,31 +9,31 @@ import SwiftUI
 import URLImage
 import SwiftUIX
 
+struct LocationImage {
+    var uiImage: UIImage
+    var rawImageData: Data
+}
+
 struct LocationView: View {
     var location: String;
-    var image: Image;
+    var image: LocationImage
     var id: String;
-    var rawImage: CGImage;
     var date: String;
     var videos: [BaustelleLiveVideo]
         
     @State private var imageOpen = false;
     @State private var shouldShare = false;
     
+    @State private var imagePreviewDate: String = ""
     @State private var imagePreviewUrl: URL = FileManager.default.temporaryDirectory.appendingPathComponent("openImage.jpg")
     
     var body: some View {
         List {
             Button(action: {
-                do {
-                    try UIImage(cgImage: rawImage).jpegData(compressionQuality: 1)?.write(to: imagePreviewUrl, options: .atomic) // atomic option overwrites it if needed
-                    self.imageOpen = true
-                } catch {
-                    print("error writing to File, can't show it in QuickLook")
-                }
+                loadPreviewContent()
             }) {
                 HStack {
-                    image
+                    Image(uiImage: image.uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 128, height: 72)
@@ -54,8 +54,8 @@ struct LocationView: View {
             .listRowSeparator(.hidden)
             .sheet(isPresented: $imageOpen, content: {
                 NavigationView {
-                    QuickLookView(previewItemUrls: [imagePreviewUrl], title: date)
-                        .navigationTitle(date)
+                    QuickLookView(previewItemUrls: [imagePreviewUrl], title: imagePreviewDate)
+                        .navigationTitle(imagePreviewDate)
                         .navigationBarTitleDisplayMode(.inline)
                         .toolbar {
                             ToolbarItem(placement: .navigation) {
@@ -73,7 +73,7 @@ struct LocationView: View {
                                     Image(systemName: "square.and.arrow.up")
                                 })
                                 .sheet(isPresented: $shouldShare) {
-                                    let shareImg = UIImage(cgImage: rawImage)
+                                    let shareImg = image.uiImage.copy()
                                     
                                     let text = "Schau was gerade auf der U2xU5 Baustelle in der Lindengasse passiert!\n\nAlle 10 Sekunden aktualisierende Bilder findet man unter https://latest.baustelle.live"
                                     
@@ -101,6 +101,17 @@ struct LocationView: View {
         .listStyle(.plain)
         .navigationTitle(location)
     }
+        
+    func loadPreviewContent() {
+        do {
+            try image.rawImageData.write(to: imagePreviewUrl, options: .atomic) // atomic option overwrites it if needed
+            imagePreviewDate = date
+            
+            imageOpen = true
+        } catch {
+            print("error writing to File, can't show it in QuickLook")
+        }
+    }
 }
 
 #if DEBUG
@@ -108,8 +119,12 @@ struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                let rawImage = UIImage(named: "li16")?.cgImage
-                LocationView(location: "Lindengasse 16", image: Image("li16"), id: "li16", rawImage: rawImage!, date: "23.08.2021, 19:14:11", videos: BaustelleLiveApi.exampleResponse.li16.videos)
+                let exampleImage = UIImage(named: "li16")!
+                let exampleLocationImage = LocationImage(
+                    uiImage: exampleImage,
+                    rawImageData: exampleImage.jpegData(compressionQuality: 1)!
+                )
+                LocationView(location: "Lindengasse 16", image: exampleLocationImage, id: "li16", date: "23.08.2021, 19:14:11", videos: BaustelleLiveApi.exampleResponse.li16.videos)
             }
         }
     }
