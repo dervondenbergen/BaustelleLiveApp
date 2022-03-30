@@ -21,7 +21,7 @@ struct SettingsView: View {
             }
             .navigationTitle("Einstellungen")
             .toolbar {
-                ToolbarItem(placement: .navigation) {
+                ToolbarItem(placement: .confirmationAction) {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
