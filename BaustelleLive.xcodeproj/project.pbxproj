@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		DC3A287727F39C0600039262 /* QuickLookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A287627F39C0600039262 /* QuickLookView.swift */; };
 		DC3A287C27F4A9BB00039262 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DC3A287B27F4A9BB00039262 /* SDWebImage */; };
+		DC3A28A827F5B14E00039262 /* BaustelleLiveTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A28A727F5B14E00039262 /* BaustelleLiveTVApp.swift */; };
+		DC3A28AA27F5B14E00039262 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3A28A927F5B14E00039262 /* ContentView.swift */; };
+		DC3A28AC27F5B15000039262 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC3A28AB27F5B15000039262 /* Assets.xcassets */; };
+		DC3A28AF27F5B15000039262 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC3A28AE27F5B15000039262 /* Preview Assets.xcassets */; };
+		DC3A28B327FCDE2F00039262 /* BaustelleLiveApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */; };
+		DC3A28B727FCDE9800039262 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = DC3A28B627FCDE9800039262 /* SwiftUIX */; };
+		DC3A28B927FCDFE700039262 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = DC3A28B827FCDFE700039262 /* SDWebImage */; };
+		DC3A28BB27FCDFF100039262 /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = DC3A28BA27FCDFF100039262 /* DynamicColor */; };
 		DC5D9BEF26D40C1D00ED1427 /* BaustelleLiveApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */; };
 		DC64389026D7D63700266A1F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64388F26D7D63700266A1F /* Category.swift */; };
 		DC64389326D7E27300266A1F /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = DC64389226D7E27300266A1F /* DynamicColor */; };
@@ -28,6 +36,11 @@
 /* Begin PBXFileReference section */
 		DC3A287627F39C0600039262 /* QuickLookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickLookView.swift; sourceTree = "<group>"; };
 		DC3A287827F3C04700039262 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		DC3A28A527F5B14E00039262 /* baustelle.live TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "baustelle.live TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC3A28A727F5B14E00039262 /* BaustelleLiveTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaustelleLiveTVApp.swift; sourceTree = "<group>"; };
+		DC3A28A927F5B14E00039262 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DC3A28AB27F5B15000039262 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DC3A28AE27F5B15000039262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaustelleLiveApi.swift; sourceTree = "<group>"; };
 		DC64388F26D7D63700266A1F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC829B4D26CC2869000E446E /* BaustelleLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaustelleLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +58,16 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DC3A28A227F5B14E00039262 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC3A28B927FCDFE700039262 /* SDWebImage in Frameworks */,
+				DC3A28BB27FCDFF100039262 /* DynamicColor in Frameworks */,
+				DC3A28B727FCDE9800039262 /* SwiftUIX in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC829B4A26CC2869000E446E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,12 +81,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DC3A28A627F5B14E00039262 /* BaustelleLiveTV */ = {
+			isa = PBXGroup;
+			children = (
+				DC3A28A727F5B14E00039262 /* BaustelleLiveTVApp.swift */,
+				DC3A28A927F5B14E00039262 /* ContentView.swift */,
+				DC3A28AB27F5B15000039262 /* Assets.xcassets */,
+				DC3A28AD27F5B15000039262 /* Preview Content */,
+			);
+			path = BaustelleLiveTV;
+			sourceTree = "<group>";
+		};
+		DC3A28AD27F5B15000039262 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				DC3A28AE27F5B15000039262 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DC3A28B527FCDE9800039262 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DC829B4426CC2869000E446E = {
 			isa = PBXGroup;
 			children = (
 				DC3A287827F3C04700039262 /* README.md */,
 				DC829B4F26CC2869000E446E /* BaustelleLive */,
+				DC3A28A627F5B14E00039262 /* BaustelleLiveTV */,
 				DC829B4E26CC2869000E446E /* Products */,
+				DC3A28B527FCDE9800039262 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				DC829B4D26CC2869000E446E /* BaustelleLive.app */,
+				DC3A28A527F5B14E00039262 /* baustelle.live TV.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -107,6 +159,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		DC3A28A427F5B14E00039262 /* BaustelleLiveTV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DC3A28B227F5B15000039262 /* Build configuration list for PBXNativeTarget "BaustelleLiveTV" */;
+			buildPhases = (
+				DC3A28A127F5B14E00039262 /* Sources */,
+				DC3A28A227F5B14E00039262 /* Frameworks */,
+				DC3A28A327F5B14E00039262 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BaustelleLiveTV;
+			packageProductDependencies = (
+				DC3A28B627FCDE9800039262 /* SwiftUIX */,
+				DC3A28B827FCDFE700039262 /* SDWebImage */,
+				DC3A28BA27FCDFF100039262 /* DynamicColor */,
+			);
+			productName = BaustelleLiveTV;
+			productReference = DC3A28A527F5B14E00039262 /* baustelle.live TV.app */;
+			productType = "com.apple.product-type.application";
+		};
 		DC829B4C26CC2869000E446E /* BaustelleLive */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DC829B5C26CC286B000E446E /* Build configuration list for PBXNativeTarget "BaustelleLive" */;
@@ -136,9 +210,12 @@
 		DC829B4526CC2869000E446E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1250;
+				LastSwiftUpdateCheck = 1330;
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
+					DC3A28A427F5B14E00039262 = {
+						CreatedOnToolsVersion = 13.3;
+					};
 					DC829B4C26CC2869000E446E = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
@@ -163,11 +240,21 @@
 			projectRoot = "";
 			targets = (
 				DC829B4C26CC2869000E446E /* BaustelleLive */,
+				DC3A28A427F5B14E00039262 /* BaustelleLiveTV */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DC3A28A327F5B14E00039262 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC3A28AF27F5B15000039262 /* Preview Assets.xcassets in Resources */,
+				DC3A28AC27F5B15000039262 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC829B4B26CC2869000E446E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -202,6 +289,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DC3A28A127F5B14E00039262 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC3A28B327FCDE2F00039262 /* BaustelleLiveApi.swift in Sources */,
+				DC3A28AA27F5B14E00039262 /* ContentView.swift in Sources */,
+				DC3A28A827F5B14E00039262 /* BaustelleLiveTVApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DC829B4926CC2869000E446E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -222,6 +319,64 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		DC3A28B027F5B15000039262 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BaustelleLiveTV/Preview Content\"";
+				DEVELOPMENT_TEAM = 6BHAXG5GQ5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = is.demont.baustellelive;
+				PRODUCT_NAME = "baustelle.live TV";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.4;
+			};
+			name = Debug;
+		};
+		DC3A28B127F5B15000039262 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BaustelleLiveTV/Preview Content\"";
+				DEVELOPMENT_TEAM = 6BHAXG5GQ5;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = is.demont.baustellelive;
+				PRODUCT_NAME = "baustelle.live TV";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 15.4;
+			};
+			name = Release;
+		};
 		DC829B5A26CC286B000E446E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -385,6 +540,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DC3A28B227F5B15000039262 /* Build configuration list for PBXNativeTarget "BaustelleLiveTV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DC3A28B027F5B15000039262 /* Debug */,
+				DC3A28B127F5B15000039262 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		DC829B4826CC2869000E446E /* Build configuration list for PBXProject "BaustelleLive" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -437,6 +601,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC3A287A27F4A9BB00039262 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
+		};
+		DC3A28B627FCDE9800039262 /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC8C935E27F35D7400AAF4D4 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
+		};
+		DC3A28B827FCDFE700039262 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC3A287A27F4A9BB00039262 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		DC3A28BA27FCDFF100039262 /* DynamicColor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC64389126D7E27300266A1F /* XCRemoteSwiftPackageReference "DynamicColor" */;
+			productName = DynamicColor;
 		};
 		DC64389226D7E27300266A1F /* DynamicColor */ = {
 			isa = XCSwiftPackageProductDependency;

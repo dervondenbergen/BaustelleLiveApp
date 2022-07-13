@@ -23,7 +23,16 @@ struct LocationView: View {
     @State private var imageOpen = false;
     @State private var shouldShare = false;
     
-    @State private var imagePreviewDate: String = ""
+    @State private var imagePreviewDate: String = "" {
+        willSet {
+            print("imagePreviewDate will set \(newValue)")
+            
+        }
+        didSet {
+            print("imagePreviewDate did set \(imagePreviewDate)")
+            
+        }
+    }
     @State private var imagePreviewUrl: URL = FileManager.default.temporaryDirectory.appendingPathComponent("openImage.jpg")
     
     var body: some View {
@@ -51,38 +60,6 @@ struct LocationView: View {
                 }
             }
             .listRowSeparator(.hidden)
-            .sheet(isPresented: $imageOpen, content: {
-                NavigationView {
-                    QuickLookView(previewItemUrls: [imagePreviewUrl], title: imagePreviewDate)
-                        .navigationTitle(imagePreviewDate)
-                        .navigationBarTitleDisplayMode(.inline)
-                        .toolbar {
-                            ToolbarItem(placement: .navigation) {
-                                Button(action: {
-                                    self.imageOpen = false
-                                }) {
-                                    Text("Schließen")
-                                }
-                            }
-                            
-                            ToolbarItem(placement: .primaryAction) {
-                                Button(action: {
-                                    self.shouldShare.toggle();
-                                }, label: {
-                                    Image(systemName: "square.and.arrow.up")
-                                })
-                                .sheet(isPresented: $shouldShare) {
-                                    let shareImg = image.uiImage.copy()
-                                    
-                                    let text = "Schau was gerade auf der U2xU5 Baustelle in der Lindengasse passiert!\n\nAlle 10 Sekunden aktualisierende Bilder findet man unter https://latest.baustelle.live"
-                                    
-                                    AppActivityView(activityItems: [shareImg, text], applicationActivities: nil)
-                                }
-                            }
-                        }
-                }
-                .navigationViewStyle(StackNavigationViewStyle())
-            })
             
             let sectionHeader = {
                 Text("Videos")
@@ -99,12 +76,45 @@ struct LocationView: View {
         }
         .listStyle(.plain)
         .navigationTitle(location)
+        .sheet(isPresented: $imageOpen, content: {
+            NavigationView {
+                QuickLookView(previewItemUrls: [imagePreviewUrl], title: imagePreviewDate)
+                    .navigationTitle(imagePreviewDate)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigation) {
+                            Button(action: {
+                                self.imageOpen = false
+                            }) {
+                                Text("Schließen")
+                            }
+                        }
+                        
+                        ToolbarItem(placement: .primaryAction) {
+                            Button(action: {
+                                self.shouldShare.toggle();
+                            }, label: {
+                                Image(systemName: "square.and.arrow.up")
+                            })
+                            .sheet(isPresented: $shouldShare) {
+                                let shareImg = image.uiImage.copy()
+                                
+                                let text = "Schau was gerade auf der U2xU5 Baustelle in der Lindengasse passiert!\n\nAlle 10 Sekunden aktualisierende Bilder findet man unter https://latest.baustelle.live"
+                                
+                                AppActivityView(activityItems: [shareImg, text], applicationActivities: nil)
+                            }
+                        }
+                    }
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+        })
     }
         
     func loadPreviewContent() {
+        print("loadPreviewContent")
         do {
             try image.rawImageData.write(to: imagePreviewUrl, options: .atomic) // atomic option overwrites it if needed
-            imagePreviewDate = date
+            imagePreviewDate = String(date)
             
             imageOpen = true
         } catch {

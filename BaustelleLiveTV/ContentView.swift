@@ -1,8 +1,8 @@
 //
 //  ContentView.swift
-//  BaustelleLive
+//  BaustelleLiveTV
 //
-//  Created by Felix De Montis on 17.08.21.
+//  Created by Felix De Montis on 31.03.22.
 //
 
 import SwiftUI
@@ -15,6 +15,7 @@ struct ContentView: View {
     var callout: String? {
         apiData?.callout
     }
+    // Jede kamera sollte ein einzelnes objekt sein, nicht so viele einuelne variablen
     var li16: URL {
         URL(string: apiData?.li16.imageUrl ?? "https://latest.baustelle.live/li16.jpg")!
     }
@@ -59,7 +60,7 @@ struct ContentView: View {
     @State var reloadTimer: Timer?
     
     @Environment(\.scenePhase) var scenePhase
-    
+    /*
     var body: some View {
         NavigationView {
             List {
@@ -257,7 +258,6 @@ struct ContentView: View {
                 await loadData()
             }
             .navigationTitle("baustelle.live")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if shouldReload {
@@ -316,7 +316,7 @@ struct ContentView: View {
             }
         }
     }
-    
+    */
     func setReloadTimer() {
         reloadTimer = Timer.scheduledTimer(withTimeInterval: reloadTimeInSeconds, repeats: true) { _ in
             Task {
@@ -402,11 +402,286 @@ struct ContentView: View {
             )
         }
     }
+     
+    enum Tab: String {
+        case home
+        case li16
+        case li27
+    }
+    
+    @AppStorage("openTab") var openTab: Tab = .home
+    
+    var body: some View {
+        NavigationView {
+            TabView(selection: $openTab) {
+                HStack {
+                    VStack {
+//                        if li16Image != nil {
+//                            NavigationLink(destination: Text("Im Link")) {
+//                                Image(uiImage: li16Image!.uiImage)
+//                                    .resizable()
+//                                    .aspectRatio(4 / 3, contentMode: .fit)
+//                                    .frame(width: 600)
+//                            }
+//                            .buttonStyle(.card)
+//                        }
+                        
+                        Text("Lindengasse 16")
+                            .font(.title)
+                        
+                        if (li16Error == nil) {
+                            ZStack {
+                                if li16ImageProgress != nil {
+                                    VStack {
+                                        Spacer()
+                                        Text("Lädt… \(li16ImageProgress!)%")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                    }
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(4 / 3, contentMode: .fit)
+                                    .frame(height: 400)
+                                    .background(Color.gray)
+                                }
+                                
+                                if li16ImageError {
+                                    VStack {
+                                        Spacer()
+                                        Text("Fehler beim herunterladen vom Bild")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                    }
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(4 / 3, contentMode: .fit)
+                                    .frame(height: 400)
+                                    .background(Color.gray)
+                                }
+                                
+                                if li16Image != nil {
+//                                    Button(action: {
+//                                        li27LocationViewOpen.toggle()
+//                                    }) {
+//                                        Image(uiImage: li27Image!.uiImage)
+//                                            .resizable()
+//                                            .aspectRatio(16 / 9, contentMode: .fit)
+//                                    }
+                                    let largeImage = Image(uiImage: li16Image!.uiImage)
+                                        .resizable()
+                                        .aspectRatio(4 / 3, contentMode: .fit)
+                                        .frame(maxHeight: .infinity)
+                                    
+                                    NavigationLink(destination: largeImage) {
+                                        Image(uiImage: li16Image!.uiImage)
+                                            .resizable()
+                                            .aspectRatio(4 / 3, contentMode: .fit)
+                                            .frame(height: 400)
+                                    }
+                                    .buttonStyle(.card)
+                                    
+                                }
+                            }
+                            .padding()
+                           Text(li16date)
+                        } else {
+                            switch li16Error?.type {
+                            case .cameraoffline:
+                                Text("Die Kamera Lindengasse 16 ist zur Zeit offline.")
+                            default:
+                                Text("Zur Zeit gibt es Probleme mit der Kamera Lindengasse 16")
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    
+                    VStack {
+//                        if li16Image != nil {
+//                            NavigationLink(destination: Text("Im Link")) {
+//                                Image(uiImage: li16Image!.uiImage)
+//                                    .resizable()
+//                                    .aspectRatio(4 / 3, contentMode: .fit)
+//                                    .frame(width: 600)
+//                            }
+//                            .buttonStyle(.card)
+//                        }
+                        
+                        Text("Lindengasse 27")
+                            .font(.title)
+                        
+                        if (li27Error == nil) {
+                            ZStack {
+                                if li27ImageProgress != nil {
+                                    VStack {
+                                        Spacer()
+                                        Text("Lädt… \(li27ImageProgress!)%")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                    }
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(16 / 9, contentMode: .fit)
+                                    .frame(height: 400)
+                                    .background(Color.gray)
+                                }
+                                
+                                if li27ImageError {
+                                    VStack {
+                                        Spacer()
+                                        Text("Fehler beim herunterladen vom Bild")
+                                            .foregroundColor(.white)
+                                        Spacer()
+                                    }
+                                    .frame(minWidth: 0, maxWidth: .infinity)
+                                    .aspectRatio(16 / 9, contentMode: .fit)
+                                    .frame(height: 400)
+                                    .background(Color.gray)
+                                }
+                                
+                                if li27Image != nil {
+//                                    Button(action: {
+//                                        li27LocationViewOpen.toggle()
+//                                    }) {
+//                                        Image(uiImage: li27Image!.uiImage)
+//                                            .resizable()
+//                                            .aspectRatio(16 / 9, contentMode: .fit)
+//                                    }
+                                    let largeImage = Image(uiImage: li27Image!.uiImage)
+                                        .resizable()
+                                        .aspectRatio(16 / 9, contentMode: .fit)
+                                        .frame(maxHeight: .infinity)
+                                    
+                                    NavigationLink(destination: largeImage) {
+                                        Image(uiImage: li27Image!.uiImage)
+                                            .resizable()
+                                            .aspectRatio(16 / 9, contentMode: .fit)
+                                            .frame(height: 400)
+                                    }
+                                    .buttonStyle(.card)
+                                    
+                                }
+                            }
+                            .padding()
+                           Text(li27date)
+                        } else {
+                            switch li27Error?.type {
+                            case .cameraoffline:
+                                Text("Die Kamera Lindengasse 27 ist zur Zeit offline.")
+                            default:
+                                Text("Zur Zeit gibt es Probleme mit der Kamera Lindengasse 27")
+                            }
+                        }
+                    }
+                }
+                .tabItem {
+                    Image(systemName: "play")
+                    Text("Videos")
+                }
+                .tag(Tab.home)
+                
+                HStack {
+                    
+                    
+                    
+                    Text("Hello, world!")
+                        .padding()
+                    
+        //            AsyncImage(url: URL(string: "https://felix.dm/assets/images/avatar.jpg")) { image in
+        //                image
+        //                    .resizable()
+        //                    .scaledToFit()
+        //            } placeholder: {
+        //                Color.green.opacity(0.3)
+        //            }
+        //            .aspectRatio(1 / 1, contentMode: .fit)
+        //            .frame(maxWidth: .infinity)
+        //            .cornerRadius(100)
+                    
+                    Button("test 1") {
+                        print("test 1")
+                    }
+                    
+    //                NavigationLink("wohin?", destination: {
+    //                    VStack {
+    //                        Text("test unterseite")
+    //
+    //                        Button(action: {
+    //                            print("unterseite")
+    //                        }, label: {
+    //                            Text("hmmm")
+    //                        })
+    //                    }
+    //                })
+                    
+                    Button(role: .destructive, action: {
+                        print("test 2")
+                    }, label: {
+                        Text("test 2")
+                    })
+                    .buttonStyle(.bordered)
+                    
+                    Button(action: {
+                        print("test 3")
+                    }, label: {
+                        AsyncImage(url: URL(string: "https://placekitten.com/200/200")) { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                        } placeholder: {
+                            Color.green.opacity(0.3)
+                        }
+                        .aspectRatio(1 / 1, contentMode: .fit)
+                        .frame(width: 200, height: 200)
+                        .cornerRadius(20)
+                    })
+                    .buttonStyle(.card)
+                }
+                .tabItem {
+                    Image(systemName: "1.square.fill")
+                    Text("First")
+                }
+                .tag(Tab.li27)
+            }
+        }
+        .task {
+            await loadData()
+        }
+        .onAppear {
+            print("onAppear")
+            if shouldReload {
+                print("onAppear shouldReload")
+//                setReloadTimer()
+            }
+        }
+        .onChange(of: scenePhase) { newPhase in
+            // https://www.hackingwithswift.com/quick-start/swiftui/how-to-detect-when-your-app-moves-to-the-background-or-foreground-with-scenephase
+            if newPhase == .active {
+                print("scenePase active")
+                // is in foreground, (re)start automatic updating and immediately fetch update
+                
+                // https://www.hackingwithswift.com/articles/117/the-ultimate-guide-to-timer
+                // https://developer.apple.com/documentation/foundation/userdefaults
+                // https://www.hackingwithswift.com/books/ios-swiftui/storing-user-settings-with-userdefaults
+                
+                if shouldReload {
+                    setReloadTimer()
+                }
+            } else if newPhase == .background {
+                print("scenePase background")
+                
+                removeReloadTimer()
+                // is in background, stop outomatic updating
+            }
+        }
+    }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewDevice("iPod touch (7th generation)")
     }
+}
+
+struct LocationImage {
+    var uiImage: UIImage
+    var rawImageData: Data
 }
