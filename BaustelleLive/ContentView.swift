@@ -147,7 +147,7 @@ struct ContentView: View {
                                     ), isActive: $li16LocationViewOpen) {
                                         EmptyView()
                                     }
-                                    .buttonStyle(.plain)
+                                    .opacity(0)
                                 }
                             }
                             .listRowInsets(.init())
@@ -218,7 +218,7 @@ struct ContentView: View {
                                     ), isActive: $li27LocationViewOpen) {
                                         EmptyView()
                                     }
-                                    .buttonStyle(.plain)
+                                    .opacity(0)
                                 }
                             }
                             .listRowInsets(.init())
