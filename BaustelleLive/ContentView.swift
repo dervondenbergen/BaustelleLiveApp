@@ -262,7 +262,7 @@ struct ContentView: View {
                     Button(action: {
                         showSettingsView = true
                     }) {
-                        Label("Einstellungen", systemImage: "gear")
+                        Label("Einstellungen", systemImage: "gearshape")
                     }.sheet(isPresented: $showSettingsView) {
                         SettingsView()
                     }
