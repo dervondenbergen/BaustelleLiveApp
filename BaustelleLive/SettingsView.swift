@@ -12,6 +12,9 @@ struct SettingsView: View {
     
     @AppStorage("shouldReload") var shouldReload = false
     
+    let appVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")! as! String
+    let appBundleVersion: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion")! as! String
+    
     var body: some View {
         NavigationView {
             List {
@@ -19,6 +22,11 @@ struct SettingsView: View {
                     Toggle(isOn: $shouldReload) {
                         Text("Bilder automatisch updaten")
                     }
+                }
+                
+                Section {
+                    Text("Version")
+                        .badge(Text("\(appVersion) (\(appBundleVersion))"))
                 }
                 
                 HStack {
@@ -33,20 +41,24 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity)
                     .cornerRadius(100)
                     
-                    VStack(spacing: 6) {
-                        Spacer()
-                        Text("Ein Projekt von")
-                            .font(.system(size: 15))
-                        
-                        Text("Felix De Montis")
-                            .bold()
-                        
-                        Text("@dervondenbergen")
-                            .font(.system(size: 12))
-                            .italic()
+                    Button(action: {
+                        UIApplication.shared.open(URL(string: "https://felix.dm")!)
+                    }, label: {
+                        VStack(spacing: 6) {
+                            Spacer()
+                            Text("Ein Projekt von")
+                                .font(.system(size: 15))
                             
-                        Spacer()
-                    }
+                            Text("Felix De Montis")
+                                .bold()
+                            
+                            Text("@dervondenbergen")
+                                .font(.system(size: 12))
+                                .italic()
+                            
+                            Spacer()
+                        }
+                    })
                     .multilineTextAlignment(.trailing)
                     .frame(maxWidth: .infinity)
                 }
@@ -55,7 +67,7 @@ struct SettingsView: View {
             }
             .navigationTitle("Einstellungen")
             .toolbar {
-                ToolbarItem(placement: .confirmationAction) {
+                ToolbarItem(placement: .primaryAction) {
                     Button(action: {
                         presentationMode.wrappedValue.dismiss()
                     }, label: {
