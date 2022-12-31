@@ -58,6 +58,8 @@ struct ContentView: View {
     }
     @State var reloadTimer: Timer?
     
+    @State var showReloadInfo: Bool = false
+    
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
@@ -261,7 +263,19 @@ struct ContentView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     if shouldReload {
-                        Image(systemName: "circle.fill").foregroundColor(Color.red)
+                        Group {
+                            if apiData?.live == true {
+                                Text("\(Image(systemName: "circle.fill")) Live")
+                                    .foregroundColor(.red)
+                            } else {
+                                Text("\(Image(systemName: "circle")) Live")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                        .onTapGesture {
+                            showReloadInfo.toggle()
+                        }
+                        .alert("Kameras sind zur Zeit \(apiData?.live == true ? "Live" : "nicht Live").", isPresented: $showReloadInfo, actions: {})
                     }
                 }
             

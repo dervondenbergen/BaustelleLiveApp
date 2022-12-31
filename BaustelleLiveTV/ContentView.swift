@@ -60,6 +60,8 @@ struct ContentView: View {
     @State var reloadTimer: Timer?
     
     @Environment(\.scenePhase) var scenePhase
+    @Environment(\.displayScale) var displayScale
+    
     /*
     var body: some View {
         NavigationView {
@@ -407,25 +409,28 @@ struct ContentView: View {
         case home
         case li16
         case li27
+        case settings
     }
     
     @AppStorage("openTab") var openTab: Tab = .home
     
+    @State var compassDirection: CompassDirection = .ENE
+    
     var body: some View {
+        ZStack(alignment: .topLeading) {
+            if shouldReload && (openTab == .home || openTab == .settings)  {
+                if apiData?.live == true {
+                    Text("\(Image(systemName: "circle.fill")) Live")
+                        .foregroundColor(.red)
+                } else {
+                    Text("\(Image(systemName: "circle")) Live")
+                        .foregroundColor(.gray)
+                }
+            }
         NavigationView {
             TabView(selection: $openTab) {
-                HStack {
+                HStack(alignment: .top) {
                     VStack {
-//                        if li16Image != nil {
-//                            NavigationLink(destination: Text("Im Link")) {
-//                                Image(uiImage: li16Image!.uiImage)
-//                                    .resizable()
-//                                    .aspectRatio(4 / 3, contentMode: .fit)
-//                                    .frame(width: 600)
-//                            }
-//                            .buttonStyle(.card)
-//                        }
-                        
                         Text("Lindengasse 16")
                             .font(.title)
                         
@@ -440,7 +445,7 @@ struct ContentView: View {
                                     }
                                     .frame(minWidth: 0, maxWidth: .infinity)
                                     .aspectRatio(4 / 3, contentMode: .fit)
-                                    .frame(height: 400)
+                                    .frame(width: 700)
                                     .background(Color.gray)
                                 }
                                 
@@ -453,18 +458,11 @@ struct ContentView: View {
                                     }
                                     .frame(minWidth: 0, maxWidth: .infinity)
                                     .aspectRatio(4 / 3, contentMode: .fit)
-                                    .frame(height: 400)
+                                    .frame(width: 700)
                                     .background(Color.gray)
                                 }
                                 
                                 if li16Image != nil {
-//                                    Button(action: {
-//                                        li27LocationViewOpen.toggle()
-//                                    }) {
-//                                        Image(uiImage: li27Image!.uiImage)
-//                                            .resizable()
-//                                            .aspectRatio(16 / 9, contentMode: .fit)
-//                                    }
                                     let largeImage = Image(uiImage: li16Image!.uiImage)
                                         .resizable()
                                         .aspectRatio(4 / 3, contentMode: .fit)
@@ -474,7 +472,7 @@ struct ContentView: View {
                                         Image(uiImage: li16Image!.uiImage)
                                             .resizable()
                                             .aspectRatio(4 / 3, contentMode: .fit)
-                                            .frame(height: 400)
+                                            .frame(width: 700)
                                     }
                                     .buttonStyle(.card)
                                     
@@ -496,15 +494,6 @@ struct ContentView: View {
                     
                     
                     VStack {
-//                        if li16Image != nil {
-//                            NavigationLink(destination: Text("Im Link")) {
-//                                Image(uiImage: li16Image!.uiImage)
-//                                    .resizable()
-//                                    .aspectRatio(4 / 3, contentMode: .fit)
-//                                    .frame(width: 600)
-//                            }
-//                            .buttonStyle(.card)
-//                        }
                         
                         Text("Lindengasse 27")
                             .font(.title)
@@ -520,7 +509,7 @@ struct ContentView: View {
                                     }
                                     .frame(minWidth: 0, maxWidth: .infinity)
                                     .aspectRatio(16 / 9, contentMode: .fit)
-                                    .frame(height: 400)
+                                    .frame(width: 700)
                                     .background(Color.gray)
                                 }
                                 
@@ -533,18 +522,11 @@ struct ContentView: View {
                                     }
                                     .frame(minWidth: 0, maxWidth: .infinity)
                                     .aspectRatio(16 / 9, contentMode: .fit)
-                                    .frame(height: 400)
+                                    .frame(width: 700)
                                     .background(Color.gray)
                                 }
                                 
                                 if li27Image != nil {
-//                                    Button(action: {
-//                                        li27LocationViewOpen.toggle()
-//                                    }) {
-//                                        Image(uiImage: li27Image!.uiImage)
-//                                            .resizable()
-//                                            .aspectRatio(16 / 9, contentMode: .fit)
-//                                    }
                                     let largeImage = Image(uiImage: li27Image!.uiImage)
                                         .resizable()
                                         .aspectRatio(16 / 9, contentMode: .fit)
@@ -554,7 +536,7 @@ struct ContentView: View {
                                         Image(uiImage: li27Image!.uiImage)
                                             .resizable()
                                             .aspectRatio(16 / 9, contentMode: .fit)
-                                            .frame(height: 400)
+                                            .frame(width: 700)
                                     }
                                     .buttonStyle(.card)
                                     
@@ -573,74 +555,27 @@ struct ContentView: View {
                     }
                 }
                 .tabItem {
-                    Image(systemName: "play")
-                    Text("Videos")
+                    Image(systemName: "camera")
+                    Text("Aufnahmen")
                 }
                 .tag(Tab.home)
                 
-                HStack {
-                    
-                    
-                    
-                    Text("Hello, world!")
-                        .padding()
-                    
-        //            AsyncImage(url: URL(string: "https://felix.dm/assets/images/avatar.jpg")) { image in
-        //                image
-        //                    .resizable()
-        //                    .scaledToFit()
-        //            } placeholder: {
-        //                Color.green.opacity(0.3)
-        //            }
-        //            .aspectRatio(1 / 1, contentMode: .fit)
-        //            .frame(maxWidth: .infinity)
-        //            .cornerRadius(100)
-                    
-                    Button("test 1") {
-                        print("test 1")
-                    }
-                    
-    //                NavigationLink("wohin?", destination: {
-    //                    VStack {
-    //                        Text("test unterseite")
-    //
-    //                        Button(action: {
-    //                            print("unterseite")
-    //                        }, label: {
-    //                            Text("hmmm")
-    //                        })
-    //                    }
-    //                })
-                    
-                    Button(role: .destructive, action: {
-                        print("test 2")
-                    }, label: {
-                        Text("test 2")
-                    })
-                    .buttonStyle(.bordered)
-                    
-                    Button(action: {
-                        print("test 3")
-                    }, label: {
-                        AsyncImage(url: URL(string: "https://placekitten.com/200/200")) { image in
-                            image
-                                .resizable()
-                                .scaledToFit()
-                        } placeholder: {
-                            Color.green.opacity(0.3)
-                        }
-                        .aspectRatio(1 / 1, contentMode: .fit)
-                        .frame(width: 200, height: 200)
-                        .cornerRadius(20)
-                    })
-                    .buttonStyle(.card)
-                }
-                .tabItem {
-                    Image(systemName: "1.square.fill")
-                    Text("First")
-                }
-                .tag(Tab.li27)
+                VideoTab(
+                    locationName: "Lindengasse 16",
+                    direction: .ENE,
+                    videos: apiData?.li16.videos ?? []
+                ).tag(Tab.li16)
+                
+                VideoTab(
+                    locationName: "Lindengasse 27",
+                    direction: .WSW,
+                    videos: apiData?.li27.videos ?? []
+                ).tag(Tab.li27)
+                
+                SettingsTab()
+                    .tag(Tab.settings)
             }
+        }
         }
         .task {
             await loadData()
@@ -649,7 +584,7 @@ struct ContentView: View {
             print("onAppear")
             if shouldReload {
                 print("onAppear shouldReload")
-//                setReloadTimer()
+                setReloadTimer()
             }
         }
         .onChange(of: scenePhase) { newPhase in
@@ -665,11 +600,23 @@ struct ContentView: View {
                 if shouldReload {
                     setReloadTimer()
                 }
+                
+                Task {
+                    await self.loadData()
+                }
             } else if newPhase == .background {
                 print("scenePase background")
                 
                 removeReloadTimer()
                 // is in background, stop outomatic updating
+            }
+        }
+        .onChange(of: shouldReload) { newShouldReload in
+            print("shouldReload \(newShouldReload)")
+            if newShouldReload {
+                setReloadTimer()
+            } else {
+                removeReloadTimer()
             }
         }
     }

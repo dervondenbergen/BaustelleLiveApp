@@ -13,13 +13,19 @@ struct CategoryModifier: ViewModifier {
     var background: Color
     var cornerRadius: CGFloat
     
+    #if os(tvOS)
+    let fontSize: CGFloat = 18
+    #else
+    let fontSize: CGFloat = 14
+    #endif
+    
     func body(content: Content) -> some View {
         let darkerBackground = Color(DynamicColor(background).darkened())
         
         return content
             .padding(.horizontal, 5)
             .padding(.vertical, 3)
-            .font(Font.system(size: 14, weight: .semibold))
+            .font(Font.system(size: fontSize, weight: .semibold))
             .textCase(.uppercase)
             .foregroundColor(color)
             .background(LinearGradient(
