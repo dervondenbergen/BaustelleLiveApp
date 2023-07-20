@@ -75,18 +75,9 @@ struct VideoItem: View {
     }
 }
 
-let exampleVideo = BaustelleLiveVideo(
-    id: "LH4JoZgMkZ0",
-    time: "1:41",
-    thumb: URL(string: "https://i3.ytimg.com/vi/LH4JoZgMkZ0/maxresdefault.jpg")!,
-    type: .daily,
-    date: "15. Juli 2021",
-    playlist: "PLIKbLfgTek4SWjAqDueEzGJkpwGIKAhrD"
-)
-
 struct VideoItem_Previews: PreviewProvider {
     static var previews: some View {
-            VideoItem(video: exampleVideo)
+        VideoItem(video: .mockVideo)
                 .previewLayout(.sizeThatFits)
     }
 }

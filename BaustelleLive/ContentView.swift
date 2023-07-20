@@ -63,7 +63,7 @@ struct ContentView: View {
     @Environment(\.scenePhase) var scenePhase
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 if (apiData != nil) {
                     if (callout != nil) {
@@ -132,24 +132,23 @@ struct ContentView: View {
                                 }
                                 
                                 if li16Image != nil {
-                                    Button(action: {
-                                        li16LocationViewOpen.toggle()
-                                    }) {
-                                        Image(uiImage: li16Image!.uiImage)
-                                            .resizable()
-                                            .aspectRatio(4 / 3, contentMode: .fit)
-                                    }
+                                    NavigationLink(
+                                        value: LocationViewViewModel(
+                                            location: "Lindengasse 16",
+                                            image: li16Image!,
+                                            id: "li16",
+                                            date: li16date,
+                                            videos: apiData!.li16.videos
+                                        ),
+                                        label: {
+                                            EmptyView()
+                                        }
+                                    )
+                                    .opacity(0.0)
                                     
-                                    NavigationLink(destination: LocationView(
-                                        location: "Lindengasse 16",
-                                        image: li16Image!,
-                                        id: "li16",
-                                        date: li16date,
-                                        videos: apiData!.li16.videos
-                                    ), isActive: $li16LocationViewOpen) {
-                                        EmptyView()
-                                    }
-                                    .opacity(0)
+                                    Image(uiImage: li16Image!.uiImage)
+                                        .resizable()
+                                        .aspectRatio(4 / 3, contentMode: .fit)
                                 }
                             }
                             .listRowInsets(.init())
@@ -203,24 +202,22 @@ struct ContentView: View {
                                 }
                                 
                                 if li27Image != nil {
-                                    Button(action: {
-                                        li27LocationViewOpen.toggle()
-                                    }) {
-                                        Image(uiImage: li27Image!.uiImage)
-                                            .resizable()
-                                            .aspectRatio(16 / 9, contentMode: .fit)
-                                    }
+                                    NavigationLink(
+                                        value: LocationViewViewModel(
+                                            location: "Lindengasse 27",
+                                            image: li27Image!,
+                                            id: "li27",
+                                            date: li27date,
+                                            videos: apiData!.li27.videos
+                                        ),
+                                        label: {
+                                            EmptyView()
+                                        }
+                                    )
                                     
-                                    NavigationLink(destination: LocationView(
-                                        location: "Lindengasse 27",
-                                        image: li27Image!,
-                                        id: "li27",
-                                        date: li27date,
-                                        videos: apiData!.li27.videos
-                                    ), isActive: $li27LocationViewOpen) {
-                                        EmptyView()
-                                    }
-                                    .opacity(0)
+                                    Image(uiImage: li27Image!.uiImage)
+                                        .resizable()
+                                        .aspectRatio(16 / 9, contentMode: .fit)
                                 }
                             }
                             .listRowInsets(.init())
@@ -288,6 +285,9 @@ struct ContentView: View {
                         SettingsView()
                     }
                 }
+            }
+            .navigationDestination(for: LocationViewViewModel.self) { locationData in
+                LocationView(locationData: locationData)
             }
             
         }

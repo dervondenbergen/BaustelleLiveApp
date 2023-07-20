@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		DC4529DE295FA24C0089B291 /* VideoTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4529DD295FA24C0089B291 /* VideoTab.swift */; };
 		DC4529E2295FA9100089B291 /* VideoTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4529E1295FA9100089B291 /* VideoTile.swift */; };
 		DC4529E3295FA99C0089B291 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64388F26D7D63700266A1F /* Category.swift */; };
+		DC5B47542A694FE000C68B04 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5B47512A69428D00C68B04 /* LocationViewModel.swift */; };
 		DC5D9BEF26D40C1D00ED1427 /* BaustelleLiveApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */; };
 		DC64389026D7D63700266A1F /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC64388F26D7D63700266A1F /* Category.swift */; };
 		DC64389326D7E27300266A1F /* DynamicColor in Frameworks */ = {isa = PBXBuildFile; productRef = DC64389226D7E27300266A1F /* DynamicColor */; };
@@ -49,6 +50,7 @@
 		DC3A28AE27F5B15000039262 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DC4529DD295FA24C0089B291 /* VideoTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTab.swift; sourceTree = "<group>"; };
 		DC4529E1295FA9100089B291 /* VideoTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTile.swift; sourceTree = "<group>"; };
+		DC5B47512A69428D00C68B04 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		DC5D9BEE26D40C1D00ED1427 /* BaustelleLiveApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaustelleLiveApi.swift; sourceTree = "<group>"; };
 		DC64388F26D7D63700266A1F /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC829B4D26CC2869000E446E /* BaustelleLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaustelleLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DC5B47532A69429000C68B04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC5B47512A69428D00C68B04 /* LocationViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		DC829B4426CC2869000E446E = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +167,7 @@
 				DCC2899326D7C2EC00281E50 /* VideoItem.swift */,
 				DC8A4B3127D4AFC900A4FF9F /* SettingsView.swift */,
 				DC3A287627F39C0600039262 /* QuickLookView.swift */,
+				DC5B47532A69429000C68B04 /* Models */,
 			);
 			path = BaustelleLive;
 			sourceTree = "<group>";
@@ -286,6 +297,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		DC3A287927F3C8C300039262 /* FIXME / TODO */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -330,6 +342,7 @@
 				DC9A9EFD28A98DBF00013425 /* QuickLookView.swift in Sources */,
 				DCB36EDC279AD7F60062D846 /* PreviewApiResponses.swift in Sources */,
 				DC8A4B3227D4AFC900A4FF9F /* SettingsView.swift in Sources */,
+				DC5B47542A694FE000C68B04 /* LocationViewModel.swift in Sources */,
 				DCB36EDE279AD90E0062D846 /* helpers.swift in Sources */,
 				DC829B5326CC2869000E446E /* ContentView.swift in Sources */,
 				DCD82A8526D3D50100FCE6B8 /* LocationView.swift in Sources */,

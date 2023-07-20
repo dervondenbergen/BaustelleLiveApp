@@ -8,5 +8,5 @@
 import Foundation
 
 extension BaustelleLiveApi {
-    static var exampleResponse = Bundle.main.decode(BaustelleLiveApi.self, from: "StoryAbout.json")
+    static var exampleResponse = Bundle.main.decode(BaustelleLiveApi.self, from: "response.example.json")
 }

@@ -8,40 +8,16 @@
 import SwiftUI
 import SwiftUIX
 
-struct LocationImage {
-    var uiImage: UIImage
-    var rawImageData: Data
-}
-
-struct LocationView: View {
-    var location: String;
-    var image: LocationImage
-    var id: String;
-    var date: String;
-    var videos: [BaustelleLiveVideo]
-        
-    @State private var imageOpen = false;
-    @State private var shouldShare = false;
-    
-    @State private var imagePreviewDate: String = "" {
-        willSet {
-            print("imagePreviewDate will set \(newValue)")
-            
-        }
-        didSet {
-            print("imagePreviewDate did set \(imagePreviewDate)")
-            
-        }
-    }
-    @State private var imagePreviewUrl: URL = FileManager.default.temporaryDirectory.appendingPathComponent("openImage.jpg")
+struct LocationView<ViewModel: LocationViewViewModelProtocol>: View {
+    @ObservedObject var locationData: ViewModel
     
     var body: some View {
         List {
             Button(action: {
-                loadPreviewContent()
+                locationData.loadPreviewContent()
             }) {
                 HStack {
-                    Image(uiImage: image.uiImage)
+                    Image(uiImage: locationData.image.uiImage)
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 128, height: 72)
@@ -53,7 +29,7 @@ struct LocationView: View {
                     VStack(alignment: .leading) {
                         Text("Letzte Aufnahme")
                             .foregroundColor(.primary)
-                        Text(date)
+                        Text(locationData.date)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     
@@ -68,23 +44,23 @@ struct LocationView: View {
             }()
             
             Section(header: sectionHeader) {
-                ForEach(videos) {video in
+                ForEach(locationData.videos) {video in
                     VideoItem(video: video)
                         .listRowSeparator(.hidden)
                 }
             }
         }
         .listStyle(.plain)
-        .navigationTitle(location)
-        .sheet(isPresented: $imageOpen, content: {
+        .navigationTitle(locationData.location)
+        .sheet(isPresented: $locationData.imageOpen, content: {
             NavigationView {
-                QuickLookView(previewItemUrls: [imagePreviewUrl], title: imagePreviewDate)
-                    .navigationTitle(imagePreviewDate)
+                QuickLookView(previewItemUrls: [locationData.imagePreviewUrl], title: locationData.imagePreviewDate)
+                    .navigationTitle(locationData.imagePreviewDate)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(placement: .navigation) {
                             Button(action: {
-                                self.imageOpen = false
+                                self.locationData.imageOpen = false
                             }) {
                                 Text("Schließen")
                             }
@@ -92,12 +68,12 @@ struct LocationView: View {
                         
                         ToolbarItem(placement: .primaryAction) {
                             Button(action: {
-                                self.shouldShare.toggle();
+                                self.locationData.shouldShare.toggle();
                             }, label: {
                                 Image(systemName: "square.and.arrow.up")
                             })
-                            .sheet(isPresented: $shouldShare) {
-                                let shareImg = image.uiImage.copy()
+                            .sheet(isPresented: $locationData.shouldShare) {
+                                let shareImg = locationData.image.uiImage.copy()
                                 
                                 let text = "Schau was gerade auf der U2xU5 Baustelle in der Lindengasse passiert!\n\nAlle 10 Sekunden aktualisierende Bilder findet man unter https://latest.baustelle.live"
                                 
@@ -109,18 +85,6 @@ struct LocationView: View {
             .navigationViewStyle(StackNavigationViewStyle())
         })
     }
-        
-    func loadPreviewContent() {
-        print("loadPreviewContent")
-        do {
-            try image.rawImageData.write(to: imagePreviewUrl, options: .atomic) // atomic option overwrites it if needed
-            imagePreviewDate = String(date)
-            
-            imageOpen = true
-        } catch {
-            print("error writing to File, can't show it in QuickLook")
-        }
-    }
 }
 
 #if DEBUG
@@ -128,12 +92,7 @@ struct LocationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                let exampleImage = UIImage(named: "li16")!
-                let exampleLocationImage = LocationImage(
-                    uiImage: exampleImage,
-                    rawImageData: exampleImage.jpegData(compressionQuality: 1)!
-                )
-                LocationView(location: "Lindengasse 16", image: exampleLocationImage, id: "li16", date: "23.08.2021, 19:14:11", videos: BaustelleLiveApi.exampleResponse.li16.videos)
+                LocationView(locationData: MockLocationViewViewModel())
             }
         }
     }
