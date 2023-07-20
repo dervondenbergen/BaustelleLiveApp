@@ -74,6 +74,7 @@ class LocationViewViewModel: LocationViewViewModelProtocol {
     }
 }
 
+#if DEBUG
 class MockLocationViewViewModel: LocationViewViewModelProtocol {
     var location: String = "Lindengasse 16"
     var image: LocationImage = {
@@ -112,3 +113,4 @@ class MockLocationViewViewModel: LocationViewViewModelProtocol {
         hasher.combine(id)
     }
 }
+#endif
